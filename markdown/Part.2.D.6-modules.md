@@ -1,4 +1,3 @@
-
 # 保存到文件的函数
 
 写好的函数，当然最好保存起来，以便将来随时调用。
@@ -58,24 +57,24 @@ mycode.say_hi('mike', 'zoe')
 ```
 
     Help on function is_prime in module mycode:
-    
+
     is_prime(n)
         Return a boolean value based upon
         whether the argument n is a prime number.
-    
+
     Help on function say_hi in module mycode:
-    
+
     say_hi(*names, greeting='Hello', capitalized=False)
         Print a string, with a greeting to everyone.
         :param *names: tuple of names to be greeted.
         :param greeting: 'Hello' as default.
         :param capitalized: Whether name should be converted to capitalzed before print. False as default.
         :returns: None
-    
+
     'mycode'
-    
+
     True
-    
+
     Hello, mike!
     Hello, zoe!
 
@@ -85,8 +84,8 @@ mycode.say_hi('mike', 'zoe')
 
 当你向 Python 说 `import ...` 的时候，它要去寻找你所指定的文件，那个文件应该是 `import` 语句后面引用的名称，再加上 `.py` 构成的名字的文件。Python 会按照以下顺序去寻找：
 
-> * 先去看看内建模块里有没有你所指定的名称；
-> * 如果没有，那么就按照 `sys.path` 所返回的目录列表顺序去找。
+> - 先去看看内建模块里有没有你所指定的名称；
+> - 如果没有，那么就按照 `sys.path` 所返回的目录列表顺序去找。
 
 你可以通过以下代码查看你自己当前机器的 `sys.path`：
 
@@ -185,7 +184,9 @@ is_prime(3)
 ```python
 import foo.bar
 ```
+
 或者
+
 ```python
 from foo import bar
 ```
@@ -228,7 +229,7 @@ import this
 ```
 
     The Zen of Python, by Tim Peters
-    
+
     Beautiful is better than ugly.
     Explicit is better than implicit.
     Simple is better than complex.
@@ -344,7 +345,7 @@ this.s
      'x': 'k',
      'y': 'l',
      'z': 'm'}
-    
+
     "Gur Mra bs Clguba, ol Gvz Crgref\n\nOrnhgvshy vf orggre guna htyl.\nRkcyvpvg vf orggre guna vzcyvpvg.\nFvzcyr vf orggre guna pbzcyrk.\nPbzcyrk vf orggre guna pbzcyvpngrq.\nSyng vf orggre guna arfgrq.\nFcnefr vf orggre guna qrafr.\nErnqnovyvgl pbhagf.\nFcrpvny pnfrf nera'g fcrpvny rabhtu gb oernx gur ehyrf.\nNygubhtu cenpgvpnyvgl orngf chevgl.\nReebef fubhyq arire cnff fvyragyl.\nHayrff rkcyvpvgyl fvyraprq.\nVa gur snpr bs nzovthvgl, ershfr gur grzcgngvba gb thrff.\nGurer fubhyq or bar-- naq cersrenoyl bayl bar --boivbhf jnl gb qb vg.\nNygubhtu gung jnl znl abg or boivbhf ng svefg hayrff lbh'er Qhgpu.\nAbj vf orggre guna arire.\nNygubhtu arire vf bsgra orggre guna *evtug* abj.\nVs gur vzcyrzragngvba vf uneq gb rkcynva, vg'f n onq vqrn.\nVs gur vzcyrzragngvba vf rnfl gb rkcynva, vg znl or n tbbq vqrn.\nAnzrfcnprf ner bar ubaxvat terng vqrn -- yrg'f qb zber bs gubfr!"
 
 试试吧，试试能否独立读懂这个文件里的代码 —— 对初学者来说，还是挺练脑子的呢！
@@ -372,4 +373,3 @@ dir(mycode)
      '__spec__',
      'is_prime',
      'say_hi']
-

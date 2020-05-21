@@ -1,15 +1,14 @@
+# 類 —— Python 的實現
 
-# 类 —— Python 的实现
-
-既然已经在不碰代码的情况下，把 OOP 中的主要概念梳理清楚了，以下的行文中，那些概念就直接用英文罢，省得理解上还得再绕个弯……
+既然已經在不碰代碼的情況下，把 OOP 中的主要概念梳理清楚了，以下的行文中，那些概念就直接用英文罷，省得理解上還得再繞個彎……
 
 ## Defining Class
 
-Class 使用 `class` 关键字进行定义。
+Class 使用 `class` 關鍵字進行定義。
 
-与函数定义不同的地方在于，Class 接收参数不是在 `class Classname():` 的括号里完成 —— 那个圆括号有另外的用处。
+與函數定義不同的地方在於，Class 接收參數不是在 `class Classname():` 的括號裏完成 —— 那個圓括號有另外的用處。
 
-让我们先看看代码，而后再逐一解释：
+讓我們先看看代碼，而後再逐一解釋：
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -47,7 +46,7 @@ type(g.say_hi)
     method
     method
 
-以上，我们创建了一个 Class:
+以上，我們創建了一個 Class:
 
 ```python
 class Golem:
@@ -57,29 +56,29 @@ class Golem:
         self.built_year = datetime.date.today().year
 ```
 
-其中定义了当我们根据这个 Class 创建一个实例的时候，那个 Object 的初始化过程，即 `__init__()` 函数 —— 又由于这个函数是在 Class 中定义的，我们称它为 Class 的一个 Method。
+其中定義了當我們根據這個 Class 創建一個實例的時候，那個 Object 的初始化過程，即 `__init__()` 函數 —— 又由於這個函數是在 Class 中定義的，我們稱它為 Class 的一個 Method。
 
-这里的 `self` 就是个变量，跟程序中其它变量的区别在于，它是一个系统默认可以识别的变量，用来指代将来用这个 Class 创建的 Instance。
+這裏的 `self` 就是個變量，跟程序中其它變量的區別在於，它是一個係統默認可以識別的變量，用來指代將來用這個 Class 創建的 Instance。
 
-比如，我们创建了 Golem 这个 Class 的一个 Instance，`g = Golem('Clay')` 之后，我们写 `g.name`，那么解析器就去找 `g` 这个实例所在的 Scope 里有没有 `self.name`……
+比如，我們創建了 Golem 這個 Class 的一個 Instance，`g = Golem('Clay')` 之後，我們寫 `g.name`，那麼解析器就去找 `g` 這個實例所在的 Scope 裏有冇有 `self.name`……
 
-注意：`self` 这个变量的定义，是在 `def __init__(self, ...)` 这一句里完成的。对于这个变量的名称取名没有强制要求，你实际上可以随便用什么名字，很多 C 程序员会习惯于将这个变量命名为 `this` —— 但根据惯例，你最好还是只用 `self` 这个变量名，省得给别人造成误会。
+註意：`self` 這個變量的定義，是在 `def __init__(self, ...)` 這一句裏完成的。對於這個變量的名稱取名冇有強製要求，你實際上可以隨便用什麼名字，很多 C 程序員會習慣於將這個變量命名為 `this` —— 但根據慣例，你最好還是隻用 `self` 這個變量名，省得給別人造成誤會。
 
-在 Class 的代码中，如果定义了 `__init__()` 函数，那么系统就会将它当作 Instance 在创建后被初始化的函数。这个函数名称是强制指定的，初始化函数必须使用这个名称；注意 `init` 两端各有两个下划线 `_`。
+在 Class 的代碼中，如果定義了 `__init__()` 函數，那麼係統就會將它當作 Instance 在創建後被初始化的函數。這個函數名稱是強製指定的，初始化函數必須使用這個名稱；註意 `init` 兩端各有兩個下劃線 `_`。
 
-当我们用 `g = Golem('Clay')` 这一句创建了一个 Golem 的 Instance 的时候，以下一连串的事情发生了：
+當我們用 `g = Golem('Clay')` 這一句創建了一個 Golem 的 Instance 的時候，以下一連串的事情發生了：
 
-> * `g` 从此之后就是一个根据 Golem 这个 Class 创建的 Instance，对使用者来说，它就是个 Object；
-> * 因为 Golem 这个 Class 的代码中有 `__init__()`，所以，当 `g` 被创建的时候，`g` 就需要被初始化……
-> * 在 `g` 所在的变量目录中，出现了一个叫做 `self` 的用来指代 `g` 本身的变量；
-> * self.name 接收了一个参数，`'Clay'`，并将其保存了下来；
-> * 生成了一个叫做 `self.built_year` 的变量，其中保存的是 `g` 这个 Object 被创建时的年份……
+> - `g` 從此之後就是一個根據 Golem 這個 Class 創建的 Instance，對使用者來說，它就是個 Object；
+> - 因為 Golem 這個 Class 的代碼中有 `__init__()`，所以，當 `g` 被創建的時候，`g` 就需要被初始化……
+> - 在 `g` 所在的變量目錄中，出現了一個叫做 `self` 的用來指代 `g` 本身的變量；
+> - self.name 接收了一個參數，`'Clay'`，並將其保存了下來；
+> - 生成了一個叫做 `self.built_year` 的變量，其中保存的是 `g` 這個 Object 被創建時的年份……
 
-对了，Golem 和 Robot 一样，都是机器人的意思；Golem 的本义来自于犹太神话，一个被赋予了生命的泥人……
+對了，Golem 和 Robot 一樣，都是機器人的意思；Golem 的本義來自於猶太神話，一個被賦予了生命的泥人……
 
 ## Inheritance
 
-我们刚刚创建了一个 Golem Class，如果我们想用它 Inherite 一个新的 Class，比如，`Running_Golem`，一个能跑的机器人，那就像以下的代码那样做 —— 注意 `class Running_Golem` 之后的圆括号：
+我們剛剛創建了一個 Golem Class，如果我們想用它 Inherite 一個新的 Class，比如，`Running_Golem`，一個能跑的機器人，那就像以下的代碼那樣做 —— 註意 `class Running_Golem` 之後的圓括號：
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -95,7 +94,7 @@ class Golem:
     def say_hi(self):
         print('Hi!')
 
-class Running_Golem(Golem):      # 刚刚就说，这个圆括号另有用途……
+class Running_Golem(Golem):      # 剛剛就說，這個圓括號另有用途……
 
     def run(self):
         print("Can't you see? I'm running...")
@@ -115,11 +114,11 @@ rg.say_hi()
     2019
     Hi!
 
-如此这般，我们根据 Golem 这个 Class 创造了一个 Subclass —— `Running_Golem`，既然它是 Golem 的 Inheritance，那么 Golem 有的 Attributes 和 Methods 它都有，并且还多了一个 Method —— `self.run`。
+如此這般，我們根據 Golem 這個 Class 創造了一個 Subclass —— `Running_Golem`，既然它是 Golem 的 Inheritance，那麼 Golem 有的 Attributes 和 Methods 它都有，並且還多了一個 Method —— `self.run`。
 
 ## Overrides
 
-当我们创建一个 Inherited Class 的时候，可以重写（Overriding）Parent Class 中的 Methods。比如这样：
+當我們創建一個 Inherited Class 的時候，可以重寫（Overriding）Parent Class 中的 Methods。比如這樣：
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -140,7 +139,7 @@ class runningGolem(Golem):
     def run(self):
         print("Can't you see? I'm running...")
 
-    def say_hi(self):                            # 不再使用 Parent Class 中的定义，而是新的……
+    def say_hi(self):                            # 不再使用 Parent Class 中的定義，而是新的……
         print('Hey! Nice day, Huh?')
 
 rg = runningGolem('Clay')
@@ -159,7 +158,7 @@ rg.say_hi()
 
 ## Inspecting A Class
 
-当我们作为用户想了解一个 Class 的 Interface，即，它的 Attributes 和 Methods 的时候，常用的有三种方式：
+當我們作為用戶想了解一個 Class 的 Interface，即，它的 Attributes 和 Methods 的時候，常用的有三種方式：
 
 ```python
 1. help(object)
@@ -186,7 +185,7 @@ class runningGolem(Golem):
     def run(self):
         print('Can\'t you see? I\'m running...')
 
-    def say_hi(self):                            # 不再使用 Parent Class 中的定义，而是新的……
+    def say_hi(self):                            # 不再使用 Parent Class 中的定義，而是新的……
         print('Hey! Nice day, Huh?')
 
 rg = runningGolem('Clay')
@@ -197,7 +196,7 @@ hasattr(rg, 'built_year')
 ```
 
     Help on runningGolem in module __main__ object:
-    
+
     class runningGolem(Golem)
      |  runningGolem(name=None)
      |
@@ -226,7 +225,7 @@ hasattr(rg, 'built_year')
      |
      |  __weakref__
      |      list of weak references to the object (if defined)
-    
+
     ['__class__',
      '__delattr__',
      '__dict__',
@@ -262,21 +261,21 @@ hasattr(rg, 'built_year')
 
 ## Scope
 
-每个变量都属于某一个 **Scope**（变量的作用域），在同一个 Scope 中，变量可以被引用被操作…… 这么说非常抽象，难以理解 —— 只能通过例子说明。
+每個變量都屬於某一個 **Scope**（變量的作用域），在同一個 Scope 中，變量可以被引用被操作…… 這麼說非常抽象，難以理解 —— 隻能通過例子說明。
 
-我们先给 Golem 这个 Class 增加一点功能 —— 我们需要随时知道究竟有多少个 Golem 处于活跃状态…… 也因此顺带给 Golem 加上一个 Method：`cease()` —— 哈！机器人么，想关掉它，说关掉它，就能关掉它；
+我們先給 Golem 這個 Class 增加一點功能 —— 我們需要隨時知道究竟有多少個 Golem 處於活躍狀態…… 也因此順帶給 Golem 加上一個 Method：`cease()` —— 哈！機器人麼，想關掉它，說關掉它，就能關掉它；
 
-另外，我们还要给机器人设置个使用年限，比如 10 年；
+另外，我們還要給機器人設置個使用年限，比如 10 年；
 
-…… 而外部会每隔一段时间，用 `Golem.is_active()` 去检查所有的机器人，所以，不需要外部额外操作，到了年头，它应该能关掉自己。—— 当然，又由于以下代码是简化书写的，核心目的是为了讲解 Scope，所以并没有专门写模拟 10 年后某些机器人自动关闭的情形……
+…… 而外部會每隔一段時間，用 `Golem.is_active()` 去檢查所有的機器人，所以，不需要外部額外操作，到了年頭，它應該能關掉自己。—— 當然，又由於以下代碼是簡化書寫的，核心目的是為了講解 Scope，所以並冇有專門寫模擬 10 年後某些機器人自動關閉的情形……
 
-在运行以下代码之前，需要先介绍三个 Python 的内建函数：
+在運行以下代碼之前，需要先介紹三個 Python 的內建函數：
 
-> * `hasattr(object, attr)` 查询这个 `object` 中有没有这个 `attr`，返回布尔值
-> * `getattr(object, attr)` 获取这个 `object` 中这个 `attr` 的值
-> * `setattr(object, attr, value)` 将这个 `object` 中的 `attr` 值设置为 `value`
+> - `hasattr(object, attr)` 查詢這個 `object` 中有冇有這個 `attr`，返回佈爾值
+> - `getattr(object, attr)` 獲取這個 `object` 中這個 `attr` 的值
+> - `setattr(object, attr, value)` 將這個 `object` 中的 `attr` 值設置為 `value`
 
-现在的你，应该一眼望过去，就已经能掌握这三个内建函数的用法 —— 还记得之前的你吗？眼睁睁看着，那些字母放在那里对你来说没任何意义…… 这才多久啊！
+現在的你，應該一眼望過去，就已經能掌握這三個內建函數的用法 —— 還記得之前的你嗎？眼睜睜看著，那些字母放在那裏對你來說冇任何意義…… 這才多久啊！
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -291,7 +290,7 @@ class Golem:
         self.name = name
         self.built_year = datetime.date.today().year
         self.__active = True
-        Golem.population += 1          # 执行一遍之后，试试把这句改成 population += 1
+        Golem.population += 1          # 執行一遍之後，試試把這句改成 population += 1
 
     def say_hi(self):
         print('Hi!')
@@ -334,53 +333,54 @@ g.is_active()
     10
     True
 
-如果你试过把第 13 行的 `Golem.population += 1` 改成 `population += 1`，你会被如下信息提醒：
+如果你試過把第 13 行的 `Golem.population += 1` 改成 `population += 1`，你會被如下信息提醒：
 
 ```python
      12         self.__active = True
 ---> 13         population += 1
 UnboundLocalError: local variable 'population' referenced before assignment
 ```
-—— 本地变量 `population` 尚未赋值，就已经提前被引用…… 为什么会这样呢？因为在你所创建 `g` 之后，马上执行的是 `__init()__` 这个初始化函数，而 `population` 是在这个函数之外定义的……
 
-如果你足够细心，你会发现这个版本中，有些变量前面有两个下划线 `__`，比如，`__life_span` 和 `self.__active`。这是 Python 的定义，变量名前面加上一个以上下划线（Underscore）`_` 的话，那么该变量是 “私有变量”（Private Variables），不能被外部引用。而按照 Python 的惯例，我们会使用两个下划线起始，去命名私有变量，如：`__life_span`。你可以回去试试，把所有的 `__life_span` 改成 `_life_span`（即，变量名开头只有一个 `_`，那么，`hasattr(Golem, '_life_span')` 和 `hasattr(g, '_life_span')` 的返回值就都变成了 `True`。
+—— 本地變量 `population` 尚未賦值，就已經提前被引用…… 為什麼會這樣呢？因為在你所創建 `g` 之後，馬上執行的是 `__init()__` 這個初始化函數，而 `population` 是在這個函數之外定義的……
 
-看看下面的图示，理解起来更为直观一些，其中每个方框代表一个 Scope：
+如果你足夠細心，你會發現這個版本中，有些變量前麵有兩個下劃線 `__`，比如，`__life_span` 和 `self.__active`。這是 Python 的定義，變量名前麵加上一個以上下劃線（Underscore）`_` 的話，那麼該變量是 “私有變量”（Private Variables），不能被外部引用。而按照 Python 的慣例，我們會使用兩個下劃線起始，去命名私有變量，如：`__life_span`。你可以回去試試，把所有的 `__life_span` 改成 `_life_span`（即，變量名開頭隻有一個 `_`，那麼，`hasattr(Golem, '_life_span')` 和 `hasattr(g, '_life_span')` 的返回值就都變成了 `True`。
+
+看看下麵的圖示，理解起來更為直觀一些，其中每個方框代錶一個 Scope：
 
 ![](https://raw.githubusercontent.com/selfteaching/the-craft-of-selfteaching/master/images/class-variables-scope.png?raw=true)
 
-整个代码启动之后，总计有 4 个 Scopes 如图所示：
+整個代碼啓動之後，總計有 4 個 Scopes 如圖所示：
 
-> * ① `class Golem` 之外；
-> * ② `class Golem` 之内；
-> * ③ `__init__(self, name=None)` 之内；
-> * ④ `cease(self)` 之内；
+> - ① `class Golem` 之外；
+> - ② `class Golem` 之內；
+> - ③ `__init__(self, name=None)` 之內；
+> - ④ `cease(self)` 之內；
 
-在 Scope ① 中，可以引用 `Golem.population`，在生成一个 Golem 的实例 `g` 之后，也可以引用 `g.population`；但 `Golem.__life_span` 和 `g.__active` 在 Scope ① 是不存在的；
+在 Scope ① 中，可以引用 `Golem.population`，在生成一個 Golem 的實例 `g` 之後，也可以引用 `g.population`；但 `Golem.__life_span` 和 `g.__active` 在 Scope ① 是不存在的；
 
-在 Scope ② 中，存在两个变量，`population` 和 `__life_span`；而 `__life_span` 是 Private（私有变量，因为它的变量名中前两个字符是下划线 `__`；于是，在 Scope ① 中，不存在 `Golem.__life_span` —— `hasattr(Golem, '__life_span')` 的值为 `False`；
+在 Scope ② 中，存在兩個變量，`population` 和 `__life_span`；而 `__life_span` 是 Private（私有變量，因為它的變量名中前兩個字符是下劃線 `__`；於是，在 Scope ① 中，不存在 `Golem.__life_span` —— `hasattr(Golem, '__life_span')` 的值為 `False`；
 
-在 Scope ③ 中和 Scope ④ 中，由于都给它们传递了 `self` 这个参数，于是，在这两个 Scope 里，都可以引用 `self.xxx`，比如 `self.population`，比如 `self.__life_span`；
+在 Scope ③ 中和 Scope ④ 中，由於都給它們傳遞了 `self` 這個參數，於是，在這兩個 Scope 裏，都可以引用 `self.xxx`，比如 `self.population`，比如 `self.__life_span`；
 
-在 Scope ③ 中，`population` 是不存在的，如果需要引用这个值，可以用 `Golem.population`，也可以用 `self.population`。同样的道理，在 Scope ③ 中 `__life_span` 也不存在，如果想用这个值，可以用 `Golem.__life_span` 或者 `self.__life_span`；
+在 Scope ③ 中，`population` 是不存在的，如果需要引用這個值，可以用 `Golem.population`，也可以用 `self.population`。同樣的道理，在 Scope ③ 中 `__life_span` 也不存在，如果想用這個值，可以用 `Golem.__life_span` 或者 `self.__life_span`；
 
-Scope ④ 与 Scope ③ 平行存在。所以在这里，`population` 和 `__life_span` 也同样并不存在。
+Scope ④ 與 Scope ③ 平行存在。所以在這裏，`population` 和 `__life_span` 也同樣並不存在。
 
-**补充**
+**補充**
 
-在本例子中，在 `__init__(self, name=None)` 函数中 `self.population` 和 `Golem.population` 都可以使用，但使用效果是不一样的：
+在本例子中，在 `__init__(self, name=None)` 函數中 `self.population` 和 `Golem.population` 都可以使用，但使用效果是不一樣的：
 
-> * `self.population` 总是去读取 `Golem` 类中 `population` 的初始值，即使后面通过 `setattr(Golem, 'population', 10)` 更改 `population` 的值后，`self.population` 的值仍为 `0`，但 `Golem.population` 值则为 `10`，你可以自己动手尝试一下。
+> - `self.population` 總是去讀取 `Golem` 類中 `population` 的初始值，即使後麵通過 `setattr(Golem, 'population', 10)` 更改 `population` 的值後，`self.population` 的值仍為 `0`，但 `Golem.population` 值則為 `10`，你可以自己動手嘗試一下。
 
 ## Encapsulation
 
-到目前为止，Golem 这个 Class 看起来不错，但有个问题，它里面的数据，外面是可以随便改的 —— 虽然，我们已经通过给变量 life_span 前面加上两个下划线，变成 `__life_span`，使其成为私有变量，外部不能触达（你不能引用 `Golem.__life_span`），可 Golem.population 就不一样，外面随时可以引用，还可以随时修改它，只需要写上一句：
+到目前為止，Golem 這個 Class 看起來不錯，但有個問題，它裏麵的數據，外麵是可以隨便改的 —— 雖然，我們已經通過給變量 life_span 前麵加上兩個下劃線，變成 `__life_span`，使其成為私有變量，外部不能觸達（你不能引用 `Golem.__life_span`），可 Golem.population 就不一樣，外麵隨時可以引用，還可以隨時修改它，隻需要寫上一句：
 
 ```python
 Golem.population = 1000000
 ```
 
-我们干脆把 `population` 这个变量也改成私有的罢：`__population`，而后需要从外界查看这个变量的话，就在 Class 里面写个函数，返回那个值好了：
+我們幹脆把 `population` 這個變量也改成私有的罷：`__population`，而後需要從外界查看這個變量的話，就在 Class 裏麵寫個函數，返回那個值好了：
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -420,7 +420,7 @@ g.population()
     <bound method Golem.population of <__main__.Golem object at 0x1068da160>>
     1
 
-如果，你希望外部能够像获得 Class 的属性那样，直接写 `g.population`，而不是必须加上一个括号 `g.population()` 传递参数（实际上传递了一个隐含的 `self` 参数），那么可以在 `def population(self):` 之前的一行加上一句 `@property`：
+如果，你希望外部能夠像獲得 Class 的屬性那樣，直接寫 `g.population`，而不是必須加上一個括號 `g.population()` 傳遞參數（實際上傳遞了一個隱含的 `self` 參數），那麼可以在 `def population(self):` 之前的一行加上一句 `@property`：
 
 ```python
 class Golem:
@@ -432,7 +432,7 @@ class Golem:
         return Golem.__population
 ```
 
-如此这般之后，你就可以用 `g.population` 了：
+如此這般之後，你就可以用 `g.population` 了：
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -472,7 +472,7 @@ g.population
 
     1
 
-如此这般之后，不仅你可以直接引用 `g.population`，并且，在外部不能再直接给 `g.population` 赋值了，否则会报错：
+如此這般之後，不僅你可以直接引用 `g.population`，並且，在外部不能再直接給 `g.population` 賦值了，否則會報錯：
 
 ```python
 ---------------------------------------------------------------------------
@@ -485,9 +485,10 @@ AttributeError                            Traceback (most recent call last)
 AttributeError: can't set attribute
 ```
 
-到此为止，Encapsulation 就做得不错了。
+到此為止，Encapsulation 就做得不錯了。
 
-如果你非得希望从外部可以设置这个值，那么，你就得再写个函数，并且在函数之前加上一句：
+如果你非得希望從外部可以設置這個值，那麼，你就得再寫個函數，並且在函數之前加上一句：
+
 ```python
     ...
 
@@ -501,7 +502,7 @@ AttributeError: can't set attribute
 
 ```
 
-这样之后，`.population` 这个 Attribute 就可以从外部被设定其值了（虽然在当前的例子中显得没必要让外部设定 `__population` 这个值…… 以下仅仅是为了举例）：
+這樣之後，`.population` 這個 Attribute 就可以從外部被設定其值了（雖然在當前的例子中顯得冇必要讓外部設定 `__population` 這個值…… 以下僅僅是為了舉例）：
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -550,7 +551,7 @@ g.__dict__
 hasattr(Golem, 'population')
 getattr(Golem, 'population')
 setattr(Golem, 'population', 10000)
-g.population    # 所以，在很多的情况下，不把数据封装在 Class 内部的话，后面会有很多麻烦。
+g.population    # 所以，在很多的情況下，不把數據封裝在 Class 內部的話，後麵會有很多麻煩。
 ```
 
     1
@@ -596,4 +597,3 @@ g.population    # 所以，在很多的情况下，不把数据封装在 Class �
     True
     <property at 0x1068f9d68>
     10000
-

@@ -1,19 +1,18 @@
+# 函數的文檔
 
-# 函数的文档
+你在調用函數的時候，你像是函數這個産品的用戶。
 
-你在调用函数的时候，你像是函数这个产品的用户。
+而你寫一個函數，像是做一個産品，這個産品將來可能會被很多用戶使用 —— 包括你自己。
 
-而你写一个函数，像是做一个产品，这个产品将来可能会被很多用户使用 —— 包括你自己。
+産品，就應該有産品說明書，別人用得著，你自己也用得著 —— 很久之後的你，很可能把當初的各種來龍去脈忘得一幹二淨，所以也同樣需要産品說明書，別看那産品曾經是你自己設計的。
 
-产品，就应该有产品说明书，别人用得着，你自己也用得着 —— 很久之后的你，很可能把当初的各种来龙去脉忘得一干二净，所以也同样需要产品说明书，别看那产品曾经是你自己设计的。
-
-Python 在这方面很用功，把函数的 “产品说明书” 当作语言内部的功能，这也是为什么 Python 有 [Sphinx](http://www.sphinx-doc.org) 这种工具，而绝大多数其他语言没有的原因之一罢。
+Python 在這方麵很用功，把函數的 “産品說明書” 當作語言內部的功能，這也是為什麼 Python 有 [Sphinx](http://www.sphinx-doc.org) 這種工具，而絕大多數其他語言冇有的原因之一罷。
 
 ## Docstring
 
-在函数定义内部，我们可以加上 **Docstring**；将来函数的 “用户” 就可以通过 `help()` 这个内建函数，或者 `.__doc__` 这个 Method 去查看这个 Docstring，即，该函数的 “产品说明书”。
+在函數定義內部，我們可以加上 **Docstring**；將來函數的 “用戶” 就可以通過 `help()` 這個內建函數，或者 `.__doc__` 這個 Method 去查看這個 Docstring，即，該函數的 “産品說明書”。
 
-先看一个 Docstring 以及如何查看某个函数的 Docstring 的例子：
+先看一個 Docstring 以及如何查看某個函數的 Docstring 的例子：
 
 ```python
 def is_prime(n):
@@ -47,7 +46,7 @@ is_prime.__doc__
 
     '\n    Return a boolean value based upon\n    whether the argument n is a prime number.\n    '
 
-Docstring 可以是多行字符串，也可以是单行字符串：
+Docstring 可以是多行字符串，也可以是單行字符串：
 
 ```python
 def is_prime(n):
@@ -77,7 +76,7 @@ is_prime.__doc__
 
     'Return a boolean value based upon whether the argument n is a prime number.'
 
-Docstring 如若存在，必须在函数定义的内部语句块的开头，也必须与其它语句一样保持相应的缩进（Indention）。Docstring 放在其它地方不起作用：
+Docstring 如若存在，必須在函數定義的內部語句塊的開頭，也必須與其它語句一樣保持相應的縮進（Indention）。Docstring 放在其它地方不起作用：
 
 ```python
 def is_prime(n):
@@ -106,36 +105,36 @@ is_prime.__doc__
 
     None
 
-## 书写 Docstring 的规范
+## 書寫 Docstring 的規範
 
-规范，虽然是人们最好遵守的，但其实通常是很多人并不遵守的东西。
+規範，雖然是人們最好遵守的，但其實通常是很多人並不遵守的東西。
 
-既然学，就要**像样** —— 这真的很重要。所以，非常有必要认真阅读 Python [PEP 257](https://www.python.org/dev/peps/pep-0257/) 关于 Docstring 的规范。
+既然學，就要**像樣** —— 這真的很重要。所以，非常有必要認真閱讀 Python [PEP 257](https://www.python.org/dev/peps/pep-0257/) 關於 Docstring 的規範。
 
-简要总结一下 PEP 257 中必须掌握的规范：
+簡要總結一下 PEP 257 中必須掌握的規範：
 
-> 1. 无论是单行还是多行的 Docstring，一概使用三个双引号扩起；
-> 2. 在 Docstring 内部，文字开始之前，以及文字结束之后，都不要有空行；
-> 3. 多行 Docstring，第一行是概要，随后空一行，再写其它部分；
-> 4. 完善的 Docstring，应该概括清楚以下内容：参数、返回值、可能触发的错误类型、可能的副作用，以及函数的使用限制等等；
-> 5. 每个参数的说明都使用单独的一行……
+> 1. 無論是單行還是多行的 Docstring，一概使用三個雙引號擴起；
+> 2. 在 Docstring 內部，文字開始之前，以及文字結束之後，都不要有空行；
+> 3. 多行 Docstring，第一行是概要，隨後空一行，再寫其它部分；
+> 4. 完善的 Docstring，應該概括清楚以下內容：參數、返回值、可能觸發的錯誤類型、可能的副作用，以及函數的使用限製等等；
+> 5. 每個參數的說明都使用單獨的一行……
 
-由于我们还没有开始研究 Class，所以，关于 Class 的 Docstring 应该遵守什么样的规范就暂时略过了。然而，这种规范你总是要反复去阅读参照的。关于 Docstring，有两个规范文件：
+由於我們還冇有開始研究 Class，所以，關於 Class 的 Docstring 應該遵守什麼樣的規範就暫時略過了。然而，這種規範你總是要反複去閱讀參照的。關於 Docstring，有兩個規範文件：
 
-> * [PEP 257: Docstring Convensions](https://www.python.org/dev/peps/pep-0257/)
-> * [PEP 258: Docutils Design Specification](https://www.python.org/dev/peps/pep-0258/)
+> - [PEP 257: Docstring Convensions](https://www.python.org/dev/peps/pep-0257/)
+> - [PEP 258: Docutils Design Specification](https://www.python.org/dev/peps/pep-0258/)
 
-需要**格外注意**的是：
+需要**格外註意**的是：
 
-> Docstring 是**写给人看的**，所以，在复杂代码的 Docstring 中，写 **Why** 要远比写 _What_ 更重要 —— 你先记住这点，以后的体会自然会不断加深。
+> Docstring 是**寫給人看的**，所以，在複雜代碼的 Docstring 中，寫 **Why** 要遠比寫 _What_ 更重要 —— 你先記住這點，以後的體會自然會不斷加深。
 
-## Sphinx 版本的 Docstring 规范
+## Sphinx 版本的 Docstring 規範
 
-Sphinx 可以从 `.py` 文件里提取所有 Docstring，而后生成完整的 Documentation。将来若是你写大型的项目，需要生成完善的文档的时候，你就会发现 Sphinx 是个 “救命” 的家伙，省时、省力、省心、省命……
+Sphinx 可以從 `.py` 文件裏提取所有 Docstring，而後生成完整的 Documentation。將來若是你寫大型的項目，需要生成完善的文檔的時候，你就會發現 Sphinx 是個 “救命” 的家夥，省時、省力、省心、省命……
 
-在这里，没办法一下子讲清楚 Sphinx 的使用，尤其是它还用它自己的一种标记语言，reStructureText，文件尾缀使用 `.rst`……
+在這裏，冇辦法一下子講清楚 Sphinx 的使用，尤其是它還用它自己的一種標記語言，reStructureText，文件尾綴使用 `.rst`……
 
-但是，可以看一个例子：
+但是，可以看一個例子：
 
 ```python
 class Vehicle(object):
@@ -206,9 +205,9 @@ help(Vehicle)
      |  __weakref__
      |      list of weak references to the object (if defined)
 
-通过插件，Sphinx 也能支持 Google Style Docstring 和 Numpy Style Docstring。
+通過插件，Sphinx 也能支持 Google Style Docstring 和 Numpy Style Docstring。
 
-以下两个链接，放在这里，以便你将来查询：
+以下兩個鏈接，放在這裏，以便你將來查詢：
 
-> * [sphinx.ext.napoleon – Support for NumPy and Google style docstrings](http://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html)
-> * [sphinx.ext.autodoc – Include documentation from docstrings](https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html)
+> - [sphinx.ext.napoleon – Support for NumPy and Google style docstrings](http://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html)
+> - [sphinx.ext.autodoc – Include documentation from docstrings](https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html)

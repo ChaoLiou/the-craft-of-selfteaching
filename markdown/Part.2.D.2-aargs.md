@@ -1,17 +1,16 @@
+# 關於參數（下）
 
-# 关于参数（下）
+## 可以接收一係列值的位置參數
 
-## 可以接收一系列值的位置参数
+如果你在定義參數的時候，在一個*位置參數*（Positional Arguments）前麵標註了星號，`*`，那麼，這個位置參數可以接收一係列值，在函數內部可以對這一係列值用 `for ... in ...` 循環進行逐一的處理。
 
-如果你在定义参数的时候，在一个*位置参数*（Positional Arguments）前面标注了星号，`*`，那么，这个位置参数可以接收一系列值，在函数内部可以对这一系列值用 `for ... in ...` 循环进行逐一的处理。
+帶一個星號的參數，英文名稱是 “Arbitrary Positional Arguments”，姑且翻譯為 “隨意的位置參數”。
 
-带一个星号的参数，英文名称是 “Arbitrary Positional Arguments”，姑且翻译为 “随意的位置参数”。
+還有帶兩個星號的參數，一會兒會講到，英文名稱是 “Arbitrary Keyword Arguments”，姑且翻譯為 “隨意的關鍵字參數”。
 
-还有带两个星号的参数，一会儿会讲到，英文名称是 “Arbitrary Keyword Arguments”，姑且翻译为 “随意的关键字参数”。
-
-> 有些中文书籍把 “Arbitrary Positional Arguments” 翻译成 “可变位置参数”。事实上，在这样的地方，无论怎样的中文翻译都是令人觉得非常吃力的。前面的这个翻译还好了，我还见过把 “Arbitrary Keyword Arguments” 翻译成 “武断的关键字参数” 的 —— 我觉得这样的翻译肯定会使读者产生说不明道不白的疑惑。
+> 有些中文書籍把 “Arbitrary Positional Arguments” 翻譯成 “可變位置參數”。事實上，在這樣的地方，無論怎樣的中文翻譯都是令人覺得非常吃力的。前麵的這個翻譯還好了，我還見過把 “Arbitrary Keyword Arguments” 翻譯成 “武斷的關鍵字參數” 的 —— 我覺得這樣的翻譯肯定會使讀者産生說不明道不白的疑惑。
 >
-> 所以，**入门之后就尽量只用英文**是个好策略。虽然刚开始有点吃力，但后面会很省心，很长寿 —— 是呀，少浪费时间、少浪费生命，其实就相当于更长寿了呀！
+> 所以，**入門之後就盡量隻用英文**是個好策略。雖然剛開始有點吃力，但後麵會很省心，很長壽 —— 是呀，少浪費時間、少浪費生命，其實就相當於更長壽了呀！
 
 ```python
 def say_hi(*names):
@@ -27,9 +26,9 @@ say_hi('mike', 'john', 'zeo')
     Hi, john!
     Hi, zeo!
 
-`say_hi()` 这一行没有任何输出。因为你在调用函数的时候，没有给它传递任何值，于是，在函数内部代码执行的时候，`name in names` 的值是 `False`，所以，`for` 循环内部的代码没有被执行。
+`say_hi()` 這一行冇有任何輸出。因為你在調用函數的時候，冇有給它傳遞任何值，於是，在函數內部代碼執行的時候，`name in names` 的值是 `False`，所以，`for` 循環內部的代碼冇有被執行。
 
-在函数内部，是把 `names` 这个参数当作容器处理的 —— 否则也没办法用 `for ... in ...` 来处理。而在调用函数的时候，我们是可以将一个容器传递给函数的 Arbitrary Positional Arguments 的 —— 做法是，在调用函数的时候，在参数前面加上星号 `*`：
+在函數內部，是把 `names` 這個參數當作容器處理的 —— 否則也冇辦法用 `for ... in ...` 來處理。而在調用函數的時候，我們是可以將一個容器傳遞給函數的 Arbitrary Positional Arguments 的 —— 做法是，在調用函數的時候，在參數前麵加上星號 `*`：
 
 ```python
 def say_hi(*names):
@@ -44,7 +43,7 @@ say_hi(*names)
     Hi, john!
     Hi, zeo!
 
-实际上，因为以上的 `say_hi(*names)` 函数内部就是把接收到的参数当作容器处理的，于是，在调用这个函数的时候，向它传递任何容器都会被同样处理：
+實際上，因為以上的 `say_hi(*names)` 函數內部就是把接收到的參數當作容器處理的，於是，在調用這個函數的時候，嚮它傳遞任何容器都會被同樣處理：
 
 ```python
 def say_hi(*names):
@@ -94,9 +93,9 @@ say_hi(*a_dictionary)
     Hi, mike!
     Hi, joe!
 
-_在定义可以接收一系列值的位置参数时，建议在函数内部为该变量命名时总是用**复数**_，因为函数内部，总是需要 `for` 循环去迭代元组中的元素，这样的时候，名称的复数形式对代码的可读性很有帮助 —— 注意以上程序第二行。以中文为母语的人，在这个细节上常常感觉 “不堪重负” —— 因为中文的名词没有复数 —— 但必须习惯。（同样的道理，若是用拼音命名变量，就肯定是为将来挖坑……）
+_在定義可以接收一係列值的位置參數時，建議在函數內部為該變量命名時總是用**複數**_，因為函數內部，總是需要 `for` 循環去叠代元組中的元素，這樣的時候，名稱的複數形式對代碼的可讀性很有幫助 —— 註意以上程序第二行。以中文為母語的人，在這個細節上常常感覺 “不堪重負” —— 因為中文的名詞冇有複數 —— 但必須習慣。（同樣的道理，若是用拚音命名變量，就肯定是為將來挖坑……）
 
-**注意**：一个函数中，可以接收一系列值的位置参数只能有一个；并且若是还有其它位置参数存在，那就必须把这个可以接收一系列值的位置参数排在所有其它位置参数之后。
+**註意**：一個函數中，可以接收一係列值的位置參數隻能有一個；並且若是還有其它位置參數存在，那就必須把這個可以接收一係列值的位置參數排在所有其它位置參數之後。
 
 ```python
 def say_hi(greeting, *names):
@@ -110,9 +109,9 @@ say_hi('Hello', 'mike', 'john', 'zeo')
     Hello, John!
     Hello, Zeo!
 
-## 为函数的某些参数设定默认值
+## 為函數的某些參數設定默認值
 
-可以在定义函数的时候，为某些参数设定默认值，这些有默认值的参数，又被称作关键字参数（Keyword Arguments）。从这个函数的 “用户” 角度来看，这些设定了默认值的参数，就成了 “可选参数”。
+可以在定義函數的時候，為某些參數設定默認值，這些有默認值的參數，又被稱作關鍵字參數（Keyword Arguments）。從這個函數的 “用戶” 角度來看，這些設定了默認值的參數，就成了 “可選參數”。
 
 ```python
 def say_hi(greeting, *names, capitalized=False):
@@ -132,11 +131,11 @@ say_hi('Hello', 'mike', 'john', 'zeo', capitalized=True)
     Hello, John!
     Hello, Zeo!
 
-## 可以接收一系列值的关键字参数
+## 可以接收一係列值的關鍵字參數
 
-之前我们看到，可以设定一个位置参数（Positional Argument），接收一系列的值，被称作 “Arbitrary Positional Argument”；
+之前我們看到，可以設定一個位置參數（Positional Argument），接收一係列的值，被稱作 “Arbitrary Positional Argument”；
 
-同样地，我们也可以设定一个可以接收很多值的关键字参数（Arbitrary Keyword Argument）。
+同樣地，我們也可以設定一個可以接收很多值的關鍵字參數（Arbitrary Keyword Argument）。
 
 ```python
 def say_hi(**names_greetings):
@@ -150,7 +149,7 @@ say_hi(mike='Hello', ann='Oh, my darling', john='Hi')
     Oh, my darling, ann!
     Hi, john!
 
-既然在函数内部，我们在处理接收到的 Arbitrary Keyword Argument 时，用的是对字典的迭代方式，那么，在调用函数的时候，也可以直接使用字典的形式：
+既然在函數內部，我們在處理接收到的 Arbitrary Keyword Argument 時，用的是對字典的叠代方式，那麼，在調用函數的時候，也可以直接使用字典的形式：
 
 ```python
 def say_hi(**names_greetings):
@@ -170,7 +169,7 @@ say_hi(**{'mike':'Hello', 'ann':'Oh, my darling', 'john':'Hi'})
     Oh, my darling, ann!
     Hi, john!
 
-至于在函数内部，你用什么样的迭代方式去处理这个字典，是你自己的选择：
+至於在函數內部，你用什麼樣的叠代方式去處理這個字典，是你自己的選擇：
 
 ```python
 def say_hi_2(**names_greetings):
@@ -183,9 +182,9 @@ say_hi_2(mike='Hello', ann='Oh, my darling', john='Hi')
     Oh, my darling, ann!
     Hi, john!
 
-## 函数定义时各种参数的排列顺序
+## 函數定義時各種參數的排列順序
 
-在定义函数的时候，各种不同类型的参数应该按什么顺序摆放呢？对于之前写过的 `say_hi()` 这个函数，
+在定義函數的時候，各種不同類型的參數應該按什麼順序擺放呢？對於之前寫過的 `say_hi()` 這個函數，
 
 ```python
 def say_hi(greeting, *names, capitalized=False):
@@ -205,7 +204,7 @@ say_hi('Welcome', 'mike', 'john', 'zeo', capitalized=True)
     Welcome, John!
     Welcome, Zeo!
 
-如果，你想给其中的 `greeting` 参数也设定个默认值怎么办？写成这样好像可以：
+如果，你想給其中的 `greeting` 參數也設定個默認值怎麼辦？寫成這樣好像可以：
 
 ```python
 def say_hi(greeting='Hello', *names, capitalized=False):
@@ -226,7 +225,7 @@ say_hi('Welcome', 'mike', 'john', 'zeo', capitalized=True)
     Welcome, John!
     Welcome, Zeo!
 
-但 `greeting` 这个参数虽然有默认值，可这个函数在被调用的时候，还是必须要给出这个参数，否则输出结果出乎你的想象：
+但 `greeting` 這個參數雖然有默認值，可這個函數在被調用的時候，還是必須要給出這個參數，否則輸出結果出乎你的想象：
 
 ```python
 def say_hi(greeting='Hello', *names, capitalized=False):
@@ -241,7 +240,7 @@ say_hi('mike', 'john', 'zeo')
     mike, john!
     mike, zeo!
 
-设定了默认值的 `greeting`，竟然不像你想象的那样是 “可选参数”！所以，你得这样写：
+設定了默認值的 `greeting`，竟然不像你想象的那樣是 “可選參數”！所以，你得這樣寫：
 
 ```python
 def say_hi(*names, greeting='Hello', capitalized=False):
@@ -261,29 +260,32 @@ say_hi('mike', 'john', 'zeo', greeting='Hi')
     Hi, john!
     Hi, zeo!
 
-这是因为函数被调用时，面对许多参数，Python 需要按照既定的规则（即，顺序）判定每个参数究竟是哪一类型的参数：
+這是因為函數被調用時，麵對許多參數，Python 需要按照既定的規則（即，順序）判定每個參數究竟是哪一類型的參數：
 
 > **Order of Arguments**
+>
 > 1. Positional
 > 1. Arbitrary Positional
 > 1. Keyword
 > 1. Arbitrary Keyword
 
-所以，即便你在定义里写成
+所以，即便你在定義裏寫成
 
 ```python
 def say_hi(greeting='Hello', *names, capitalized=False):
     ...
 ```
 
-在调用该函数的时候，无论你写的是
+在調用該函數的時候，無論你寫的是
+
 ```python
 say_hi('Hi', 'mike', 'john', 'zeo')
 ```
 
-还是
+還是
+
 ```python
 say_hi('mike', 'john', 'zeo')
 ```
 
-Python 都会认为接收到的第一个值是 Positional Argument —— 因为在定义中，`greeting` 被放到了 Arbitrary Positional Arguments 之前。
+Python 都會認為接收到的第一個值是 Positional Argument —— 因為在定義中，`greeting` 被放到了 Arbitrary Positional Arguments 之前。

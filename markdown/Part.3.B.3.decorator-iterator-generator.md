@@ -1,11 +1,10 @@
+# 函數工具
 
-# 函数工具
+這一章要講的是叠代器、生成器和裝飾器，這些都是函數工具。有人把它們稱為 **DIG**（Decorator，Iterator，Generator）—— 它們都是真正掌握 Python 的關鍵。
 
-这一章要讲的是迭代器、生成器和装饰器，这些都是函数工具。有人把它们称为 **DIG**（Decorator，Iterator，Generator）—— 它们都是真正掌握 Python 的关键。
+## 叠代器（Iterator）
 
-## 迭代器（Iterator）
-
-我们已经见过 Python 中的所有容器，都是可迭代的 —— 准确地讲，是可以通过迭代遍历每一个元素：
+我們已經見過 Python 中的所有容器，都是可叠代的 —— 準確地講，是可以通過叠代遍曆每一個元素：
 
 ```python
 string = "this is a string."
@@ -26,7 +25,7 @@ print()
     item 1, item 2, 3, 5,
     1, 2, 3, 4, 5,
 
-有个内建函数，就是用来把一个 “可迭代对象”（Iterable）转换成 “迭代器”（Iterator）的 —— `iter()`。
+有個內建函數，就是用來把一個 “可叠代對象”（Iterable）轉換成 “叠代器”（Iterator）的 —— `iter()`。
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -41,12 +40,12 @@ type(L)
 ```
 
     str_iterator
-    
+
     tuple_iterator
-    
+
     list_iterator
 
-迭代器如何使用呢？有个 `next()` 函数：
+叠代器如何使用呢？有個 `next()` 函數：
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -59,7 +58,7 @@ next(i)
 next(i)
 next(i)
 next(i)
-# next(i) 前面已经到 'n' 了，再调用就会有 StopIteration 错误提示。
+# next(i) 前麵已經到 'n' 了，再調用就會有 StopIteration 錯誤提示。
 ```
 
     'P'
@@ -69,11 +68,11 @@ next(i)
     'o'
     'n'
 
-在 `i` 这个迭代器里一共有 6 个元素，所以，`next(i)` 在被调用 6 次之后，就不能再被调用了，一旦再被调用，就会触发 StopIteration 错误。
+在 `i` 這個叠代器裏一共有 6 個元素，所以，`next(i)` 在被調用 6 次之後，就不能再被調用了，一旦再被調用，就會觸發 StopIteration 錯誤。
 
-那我们怎么自己写一个迭代器呢？
+那我們怎麼自己寫一個叠代器呢？
 
-迭代器是个 Object，所以，写迭代器的时候写的是 Class，比如，我们写一个数数的迭代器，Counter：
+叠代器是個 Object，所以，寫叠代器的時候寫的是 Class，比如，我們寫一個數數的叠代器，Counter：
 
 ```python
 class Counter(object):
@@ -107,17 +106,17 @@ type(Counter)
     103
     104
     105
-    
+
     type
 
-这里的重点在于两个函数的存在，`__iter__(self)` 和 `__next__(self)`。
+這裏的重點在於兩個函數的存在，`__iter__(self)` 和 `__next__(self)`。
 
 ```python
 def __iter__(self):
     return self
 ```
 
-这两句是约定俗成的写法，写上它们，`Counter` 这个类就被会被识别为 Iterator 类型。而后再有 `__next__(self)` 的话，它就是个完整的迭代器了。除了可以用 `for loop` 之外，也可以用 `while loop` 去遍历迭代器中的所有元素：
+這兩句是約定俗成的寫法，寫上它們，`Counter` 這個類就被會被識別為 Iterator 類型。而後再有 `__next__(self)` 的話，它就是個完整的叠代器了。除了可以用 `for loop` 之外，也可以用 `while loop` 去遍曆叠代器中的所有元素：
 
 ```python
 class Counter(object):
@@ -154,7 +153,7 @@ while True:
 
 ## 生成器（Generator）
 
-那用函数（而不是 Class）能不能写一个 Counter 呢？答案是能，用生成器（Generator）就行。
+那用函數（而不是 Class）能不能寫一個 Counter 呢？答案是能，用生成器（Generator）就行。
 
 ```python
 def counter(start, stop):
@@ -171,17 +170,17 @@ for i in counter(101, 105):
     104
     105
 
-哎呀！怎么感觉这个简洁很多呢？
+哎呀！怎麼感覺這個簡潔很多呢？
 
-不过，是否简洁并不是问题，这次看起来用生成器更简单，无非是因为当前的例子更适合用生成器而已。在不同的情况下，用迭代器和用生成器各有各的优势。
+不過，是否簡潔並不是問題，這次看起來用生成器更簡單，無非是因為當前的例子更適合用生成器而已。在不同的情況下，用叠代器和用生成器各有各的優勢。
 
-这里的关键在于 `yield` 这个语句。它和 `return` 最明显的不同在于，在它之后的语句依然会被执行 —— 而 `return` 之后的语句就被忽略了。
+這裏的關鍵在於 `yield` 這個語句。它和 `return` 最明顯的不同在於，在它之後的語句依然會被執行 —— 而 `return` 之後的語句就被忽略了。
 
-但正因为这个不同，在写生成器的时候，只能用 `yield`，而没办法使用 `return` —— 你现在可以回去把上面代码中的 `yield` 改成 `return` 看看，然后体会一下它们之间的不同。
+但正因為這個不同，在寫生成器的時候，隻能用 `yield`，而冇辦法使用 `return` —— 你現在可以回去把上麵代碼中的 `yield` 改成 `return` 看看，然後體會一下它們之間的不同。
 
-生成器函数被 `next()` 调用后，执行到 `yield` 生成一个值返回（然后继续执行 `next()` 外部剩余的语句）；下次再被 `next()` 调用的时候，从上次生成返回值的 `yield` 语句处继续执行…… 如果感觉费解，就多读几遍 —— 而后再想想若是生成器中有多个 `yield` 语句会是什么情况？
+生成器函數被 `next()` 調用後，執行到 `yield` 生成一個值返回（然後繼續執行 `next()` 外部剩餘的語句）；下次再被 `next()` 調用的時候，從上次生成返回值的 `yield` 語句處繼續執行…… 如果感覺費解，就多讀幾遍 —— 而後再想想若是生成器中有多個 `yield` 語句會是什麼情況？
 
-还有一种东西，叫做生成器表达式。先看个例子：
+還有一種東西，叫做生成器錶達式。先看個例子：
 
 ```python
 even = (e for e in range(10) if not e % 2)
@@ -198,11 +197,11 @@ for e in even:
     6
     8
 
-其实，这种表达式我们早就在 List Comprehension 里见过 —— 那就是通过生成器表达式完成的。
+其實，這種錶達式我們早就在 List Comprehension 裏見過 —— 那就是通過生成器錶達式完成的。
 
-**注意**
+**註意**
 
-仔细看 `even = (e for e in range(10) if not e % 2)` 中最外面那层括号，用了圆括号，`even` 就是用生成器创造的迭代器（Iterator），若是用了方括号，那就是用生成器创造的列表（List）—— 当然用花括号 `{}` 生成的就是集合（Set）……
+仔細看 `even = (e for e in range(10) if not e % 2)` 中最外麵那層括號，用了圓括號，`even` 就是用生成器創造的叠代器（Iterator），若是用了方括號，那就是用生成器創造的列錶（List）—— 當然用花括號 `{}` 生成的就是集合（Set）……
 
 ```python
 # even = (e for e in range(10) if not e % 2)
@@ -234,7 +233,7 @@ for o in odd:
     7
     9
 
-**生成器表达式必须在括号内使用**（参见官方 [HOWTOS](https://docs.python.org/3/howto/functional.html#generator-expressions-and-list-comprehensions)），包括函数的参数括号，比如：
+**生成器錶達式必須在括號內使用**（參見官方 [HOWTOS](https://docs.python.org/3/howto/functional.html#generator-expressions-and-list-comprehensions)），包括函數的參數括號，比如：
 
 ```python
 sum_of_even = sum(e for e in range(10) if not e % 2)
@@ -243,7 +242,7 @@ print(sum_of_even)
 
     20
 
-函数内部当然可以包含其它的函数，以下就是一个函数中包含着其它函数的结构示例：
+函數內部當然可以包含其它的函數，以下就是一個函數中包含著其它函數的結構示例：
 
 ```python
 def a_func():
@@ -257,7 +256,7 @@ def a_func():
     return True
 ```
 
-想象一下，如果，我们让一个函数返回的是另外一个函数呢？我们一步一步来：
+想象一下，如果，我們讓一個函數返回的是另外一個函數呢？我們一步一步來：
 
 ```python
 def a_func():
@@ -281,7 +280,7 @@ a_func()
     Hi, I'm a_func!
     Hi, I'm b_func!
 
-上一个代码，我们可以写成这样 —— 让 `a_func()` 将它内部的 `b_func()` 作为它的返回值：
+上一個代碼，我們可以寫成這樣 —— 讓 `a_func()` 將它內部的 `b_func()` 作為它的返回值：
 
 ```python
 def a_func():
@@ -295,7 +294,7 @@ a_func()
     Hi, I'm a_func!
     Hi, I'm b_func!
 
-如果我们在 `return` 语句里只写函数名呢？好像这样：
+如果我們在 `return` 語句裏隻寫函數名呢？好像這樣：
 
 ```python
 def a_func():
@@ -309,19 +308,19 @@ a_func()
     Hi, I'm a_func!
     <function __main__.a_func.<locals>.b_func()>
 
-这次返回的不是调用 `b_func()` 这个函数的执行结果，返回的是 `b_func` 这个*函数本身*。
+這次返回的不是調用 `b_func()` 這個函數的執行結果，返回的是 `b_func` 這個*函數本身*。
 
-## 装饰器（Decorator）
+## 裝飾器（Decorator）
 
-### 函数也是对象
+### 函數也是對象
 
-这是关键：
+這是關鍵：
 
-> 函数本身也是对象（即，Python 定义的某个 Class 的一个 Instance）。
+> 函數本身也是對象（即，Python 定義的某個 Class 的一個 Instance）。
 
-于是，函数本身其实可以与其它的数据类型一样，作为其它函数的参数或者返回值。
+於是，函數本身其實可以與其它的數據類型一樣，作為其它函數的參數或者返回值。
 
-让我们分步走 —— 注意，在以下代码中，`a_decorator` 返回的一个函数的调用 `wrapper()` 而不是 `wrapper` 这个函数本身：
+讓我們分步走 —— 註意，在以下代碼中，`a_decorator` 返回的一個函數的調用 `wrapper()` 而不是 `wrapper` 這個函數本身：
 
 ```python
 def a_decorator(func):
@@ -343,7 +342,7 @@ a_decorator(a_func)
     Hi, I'm a_func!
     ... and we can do sth. after it is called...
 
-如果返回的是函数本身，`wrapper`，输出结果跟你想的并不一样：
+如果返回的是函數本身，`wrapper`，輸出結果跟你想的並不一樣：
 
 ```python
 def a_decorator(func):
@@ -363,9 +362,9 @@ a_decorator(a_func)
     Hi, I'm a_func!
     <function __main__.a_decorator.<locals>.wrapper()>
 
-### 装饰器操作符
+### 裝飾器操作符
 
-不过，Python 提供了一个针对函数的操作符 `@`，它的作用是…… 很难一下子说清楚，先看看以下代码：
+不過，Python 提供了一個針對函數的操作符 `@`，它的作用是…… 很難一下子說清楚，先看看以下代碼：
 
 ```python
 def a_decorator(func):
@@ -386,15 +385,15 @@ a_func()
     Hi, I'm a_func!
     ... and we can do sth. after it was called...
 
-注意：以上的代码中，`a_decorator(func)` 返回的是 `wrapper` 这个函数本身。
+註意：以上的代碼中，`a_decorator(func)` 返回的是 `wrapper` 這個函數本身。
 
-在我们定义 `a_func()` 的时候，在它之前，加上了一句 `@a_decorator`；这么做的结果是：
+在我們定義 `a_func()` 的時候，在它之前，加上了一句 `@a_decorator`；這麼做的結果是：
 
-> 每次 `a_func()` 在被调用的时候，因为它之前有一句 `@a_decorator`，所以它会先被当作参数传递到 `a_decorator(func)` 这个函数中…… 而后，真正的执行，是在 `a_decorator()` 里被完成的。
+> 每次 `a_func()` 在被調用的時候，因為它之前有一句 `@a_decorator`，所以它會先被當作參數傳遞到 `a_decorator(func)` 這個函數中…… 而後，真正的執行，是在 `a_decorator()` 裏被完成的。
 
-—— 被 `@` 调用的函数，叫做 “装饰器”（Decorator），比如，以上代码中的 `a_decorator(func)`。
+—— 被 `@` 調用的函數，叫做 “裝飾器”（Decorator），比如，以上代碼中的 `a_decorator(func)`。
 
-现在可以很简单直接地说清楚装饰器的作用了：
+現在可以很簡單直接地說清楚裝飾器的作用了：
 
 ```python
 @a_decorator
@@ -402,7 +401,7 @@ def a_func():
     ...
 ```
 
-等价于
+等價於
 
 ```python
 def a_func():
@@ -410,11 +409,11 @@ def a_func():
 a_func = a_decorator(a_func)
 ```
 
-就是用 `a_decorator` 的调用结果替换掉原来的函数。`a_decorator` 返回值是什么，以后调用 `a_func` 时就是在调用这个返回值，而 `a_decorator` 本身此时已经执行完毕了。
+就是用 `a_decorator` 的調用結果替換掉原來的函數。`a_decorator` 返回值是什麼，以後調用 `a_func` 時就是在調用這個返回值，而 `a_decorator` 本身此時已經執行完畢了。
 
-### 装饰器的用途
+### 裝飾器的用途
 
-Decorator 最常用的场景是什么呢？最常用的场景就是用来改变其它函数的行为。
+Decorator 最常用的場景是什麼呢？最常用的場景就是用來改變其它函數的行為。
 
 ```python
 def an_output():
@@ -440,7 +439,7 @@ print(an_output())
 
     THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.
 
-你还可以给一个函数加上一个以上的装饰器：
+你還可以給一個函數加上一個以上的裝飾器：
 
 ```python
 def uppercase(func):
@@ -465,7 +464,7 @@ print(an_output())
 
     <strong>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.</strong>
 
-你把两个装饰器的顺序调换一下写成下面这样试试：
+你把兩個裝飾器的順序調換一下寫成下麵這樣試試：
 
 ```python
 @uppercase
@@ -473,17 +472,18 @@ print(an_output())
 def an_output():
 ...
 ```
-装饰器的执行顺序是 “自下而上” —— 其实是 “由里到外” 更为准确。体会一下。
 
-### 装饰带有参数的函数
+裝飾器的執行順序是 “自下而上” —— 其實是 “由裏到外” 更為準確。體會一下。
 
-到现在我们见到的使用装饰器的函数都是没有参数的：`an_output` 以及之前的 `a_func`。
+### 裝飾帶有參數的函數
 
-如果被装饰的函数有参数怎么办？装饰器自身内部又应该怎么写？
+到現在我們見到的使用裝飾器的函數都是冇有參數的：`an_output` 以及之前的 `a_func`。
 
-这时候，Python 的 `*args` and `**kwargs` 的威力就显现出来了 —— 之前怕麻烦没有通过仔细反复阅读搞定这 “一个星号、两个星号、直接晕倒” 的知识点的人，现在恐怕要吃亏了……
+如果被裝飾的函數有參數怎麼辦？裝飾器自身內部又應該怎麼寫？
 
-装饰器函数本身这么写：
+這時候，Python 的 `*args` and `**kwargs` 的威力就顯現出來了 —— 之前怕麻煩冇有通過仔細反複閱讀搞定這 “一個星號、兩個星號、直接暈倒” 的知識點的人，現在恐怕要吃虧了……
+
+裝飾器函數本身這麼寫：
 
 ```python
 def a_decorator(func):
@@ -493,9 +493,9 @@ def a_decorator(func):
     return wrapper
 ```
 
-在这里，`(*args, **kwargs)` 非常强大，它可以匹配所有函数传进来的所有参数…… 准确地讲，`*args` 接收并处理所有传递进来的位置参数，`**kwargs` 接收并处理所有传递进来的关键字参数。
+在這裏，`(*args, **kwargs)` 非常強大，它可以匹配所有函數傳進來的所有參數…… 準確地講，`*args` 接收並處理所有傳遞進來的位置參數，`**kwargs` 接收並處理所有傳遞進來的關鍵字參數。
 
-假设我们有这么个函数：
+假設我們有這麼個函數：
 
 ```python
 def say_hi(greeting, name=None):
@@ -506,7 +506,7 @@ print(say_hi('Hello', 'Jack'))
 
     Hello! Jack.
 
-如果我们想在装饰器里对函数名、参数，都做些事情 —— 比如，我们写个 `@trace` 用来告诉用户调用一个函数的时候都发生了什么……
+如果我們想在裝飾器裏對函數名、參數，都做些事情 —— 比如，我們寫個 `@trace` 用來告訴用戶調用一個函數的時候都發生了什麼……
 
 ```python
 def trace(func):
@@ -530,18 +530,18 @@ print(say_hi('Hello', name = 'Jack'))
     Trace: say_hi('Hello',) returned: Hello! Jack.
     Hello! Jack.
 
-有了以上的基础知识之后，再去阅读 Python Decorator Library 的 Wiki 页面就会轻松许多：
+有了以上的基礎知識之後，再去閱讀 Python Decorator Library 的 Wiki 頁麵就會輕鬆許多：
 
 > https://wiki.python.org/moin/PythonDecoratorLibrary
 
-### 学会装饰器究竟有多重要？
+### 學會裝飾器究竟有多重要？
 
-装饰器一定要学会 —— 因为很多人就是不会。
+裝飾器一定要學會 —— 因為很多人就是不會。
 
-Oreilly.com 上有篇文章，《5 reasons you need to learn to write Python decorators》中，其中的第五条竟然是：**Boosting your career**!
+Oreilly.com 上有篇文章，《5 reasons you need to learn to write Python decorators》中，其中的第五條竟然是：**Boosting your career**!
 
 > Writing decorators isn't easy at first. It's not rocket science, but takes enough effort to learn, and to grok the nuances involved, that many developers will never go to the trouble to master it. And that works to your advantage. When you become the person on your team who learns to write decorators well, and write decorators that solve real problems, other developers will use them. Because once the hard work of writing them is done, decorators are so easy to use. This can massively magnify the positive impact of the code you write. And it just might make you a hero, too.
 >
 > As I've traveled far and wide, training hundreds of working software engineers to use Python more effectively, teams have consistently reported writing decorators to be one of the most valuable and important tools they've learned in my advanced Python programming workshops.
 
-为什么有那么多人就是学不会呢？—— 只不过是因为在此之前，遇到 `*args` `**kwargs` 的时候，“一个星号、两个星号、直接晕倒”…… 而后并未再多挣扎一下。
+為什麼有那麼多人就是學不會呢？—— 隻不過是因為在此之前，遇到 `*args` `**kwargs` 的時候，“一個星號、兩個星號、直接暈倒”…… 而後並未再多掙紮一下。

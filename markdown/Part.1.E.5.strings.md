@@ -1,9 +1,8 @@
-
 # 字符串
 
-在任何一本编程书籍之中，关于字符串的内容总是很长 —— 就好像每本英语语法书中，关于动词的内容总是占全部内容的至少三分之二。这也没什么办法，因为处理字符串是计算机程序中最普遍的需求 —— 因为程序的主要功能就是完成人机交互，人们所用的就是字符串而不是二进制数字。
+在任何一本編程書籍之中，關於字符串的內容總是很長 —— 就好像每本英語語法書中，關於動詞的內容總是佔全部內容的至少三分之二。這也冇什麼辦法，因為處理字符串是計算機程序中最普遍的需求 —— 因為程序的主要功能就是完成人機交互，人們所用的就是字符串而不是二進製數字。
 
-在计算机里，所有的东西最终都要被转换成数值。又由于计算机靠的是电路，所以，最终只能处理 `1` 和 `0`，于是，最基本的数值是二进制；于是，连整数、浮点数字，都要最终转换成二进制数值。这就是为什么在所有编程语言中 `1.1 + 2.2` 并不是你所想象的 `3.3` 的原因。
+在計算機裏，所有的東西最終都要被轉換成數值。又由於計算機靠的是電路，所以，最終隻能處理 `1` 和 `0`，於是，最基本的數值是二進製；於是，連整數、浮點數字，都要最終轉換成二進製數值。這就是為什麼在所有編程語言中 `1.1 + 2.2` 並不是你所想象的 `3.3` 的原因。
 
 ```python
 1.1 + 2.2
@@ -11,15 +10,15 @@
 
     3.3000000000000003
 
-因为最终所有的值都要转换成二进制 —— 这时候，小数的精度就有损耗，多次浮点数字转换成二进制相互运算之后再从二进制转换为十进制之后返回的结果，精度损耗就更大了。因此，在计算机上，浮点数字的精度总有极限。有兴趣进一步可以看看[关于 decimal 模块的文档](https://docs.python.org/3/library/decimal.html)。
+因為最終所有的值都要轉換成二進製 —— 這時候，小數的精度就有損耗，多次浮點數字轉換成二進製相互運算之後再從二進製轉換為十進製之後返回的結果，精度損耗就更大了。因此，在計算機上，浮點數字的精度總有極限。有興趣進一步可以看看[關於 decimal 模塊的文檔](https://docs.python.org/3/library/decimal.html)。
 
-字符串也一样。一个字符串由 0 个字符或者多个字符构成，它最终也要被转换成数值，再进一步被转换成二进制数值。空字符串的值是 `None`，即便是这个 `None` —— 也最终还是要被转换成二进制的 `0`。
+字符串也一樣。一個字符串由 0 個字符或者多個字符構成，它最終也要被轉換成數值，再進一步被轉換成二進製數值。空字符串的值是 `None`，即便是這個 `None` —— 也最終還是要被轉換成二進製的 `0`。
 
-## 字符码表的转换
+## 字符碼錶的轉換
 
-很久以前，计算机的中央处理器最多只能够处理 8 位二进制数值，所以，那时候的计算机只能处理 256 个字符，即，2<sup>8</sup> 个字符。那个时候计算机所使用的码表叫 ASCII。现在计算机的中央处理器，大多是 64 位的，所以可以使用 2<sup>64</sup> 容量的码表，叫做 [Unicode](https://zh.wikipedia.org/wiki/Unicode)。随着多年的收集，2018 年 6 月 5 日公布的 `11.0.0` 版本已经包含了 13 万个字符 —— 突破 10 万字符是在 2005 年<a href='#fn1' name='fn1b'><sup>[1]</sup></a>。
+很久以前，計算機的中央處理器最多隻能夠處理 8 位二進製數值，所以，那時候的計算機隻能處理 256 個字符，即，2<sup>8</sup> 個字符。那個時候計算機所使用的碼錶叫 ASCII。現在計算機的中央處理器，大多是 64 位的，所以可以使用 2<sup>64</sup> 容量的碼錶，叫做 [Unicode](https://zh.wikipedia.org/wiki/Unicode)。隨著多年的收集，2018 年 6 月 5 日公佈的 `11.0.0` 版本已經包含了 13 萬個字符 —— 突破 10 萬字符是在 2005 年<a href='#fn1' name='fn1b'><sup>[1]</sup></a>。
 
-把单个字符转换成码值的函数是 `ord()`，它只接收单个字符，否则会报错；它返回该字符的  unicode 编码。与 `ord()` 相对的函数是 `chr()`，它接收且只接收一个整数作为参数，而后返回相应的字符。`ord()` 接收多个字符的话会报错。
+把單個字符轉換成碼值的函數是 `ord()`，它隻接收單個字符，否則會報錯；它返回該字符的 unicode 編碼。與 `ord()` 相對的函數是 `chr()`，它接收且隻接收一個整數作為參數，而後返回相應的字符。`ord()` 接收多個字符的話會報錯。
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -28,10 +27,10 @@ InteractiveShell.ast_node_interactivity = "all"
 ord('a')
 chr(122)
 
-ord('氅')  # 完了，汉字也有你不认识的吧？
-chr(25354) # 这个字估计你也不认识……
+ord('氅')  # 完了，漢字也有你不認識的吧？
+chr(25354) # 這個字估計你也不認識……
 
-# ord('Python') # 这一句会报错
+# ord('Python') # 這一句會報錯
 ```
 
     97
@@ -39,26 +38,26 @@ chr(25354) # 这个字估计你也不认识……
     27653
     '挊'
 
-## 字符串的标示
+## 字符串的標示
 
-标示一个字符串，有 4 种方式，用单引号、用双引号，用三个单引号或者三个双引号：
+標示一個字符串，有 4 種方式，用單引號、用雙引號，用三個單引號或者三個雙引號：
 
 ```python
-'Simple is better than complex.' # 用单引号
+'Simple is better than complex.' # 用單引號
 ```
 
     'Simple is better than complex.'
 
 ```python
-"Simple is better than complex." # 用双引号
+"Simple is better than complex." # 用雙引號
 ```
 
     'Simple is better than complex.'
 
 ```python
-# 用三个单引号。注意输出结果中的 \n
-# 这个字符串，看起来是两行，保存在内存或者变量之中的时候，
-# 是一整串，其中的换行是用 \n 表示的。
+# 用三個單引號。註意輸出結果中的 \n
+# 這個字符串，看起來是兩行，保存在內存或者變量之中的時候，
+# 是一整串，其中的換行是用 \n 錶示的。
 '''
 Simple is better than complex.
 Complex is better than complicated.
@@ -68,7 +67,7 @@ Complex is better than complicated.
     '\nSimple is better than complex.\nComplex is better than complicated.\n'
 
 ```python
-#用三个双引号。注意输出结果中的 \n
+#用三個雙引號。註意輸出結果中的 \n
 """
 Simple is better than complex.
 Complex is better than complicated.
@@ -83,21 +82,21 @@ print(
 Simple is better than complex.
 Complex is better than complicated.
 """
-) #用 print() 输出的时候，\n 就是不可见字符，字符串本身如下：
+) #用 print() 輸出的時候，\n 就是不可見字符，字符串本身如下：
 # '\nSimple is better than complex.\nComplex is better than complicated.\n'
-# 其中的 \n 被打印出来的时候显示成换行
+# 其中的 \n 被打印出來的時候顯示成換行
 ```
 
     Simple is better than complex.
     Complex is better than complicated.
 
-## 字符串与数值之间的转换
+## 字符串與數值之間的轉換
 
-由数字构成的字符串，可以被转换成数值，转换整数用 `int()`，转换浮点数字用 `float()`。
+由數字構成的字符串，可以被轉換成數值，轉換整數用 `int()`，轉換浮點數字用 `float()`。
 
-与之相对，用 `str()`，可以将数值转换成字符串类型。
+與之相對，用 `str()`，可以將數值轉換成字符串類型。
 
-注意，int() 在接收字符串为参数的时候，只能做整数转换。下面代码最后一行会报错：
+註意，int() 在接收字符串為參數的時候，隻能做整數轉換。下麵代碼最後一行會報錯：
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -106,16 +105,16 @@ InteractiveShell.ast_node_interactivity = "all"
 int('3')
 float('3')
 str(3.1415926)
-# int('3.1415926') # 这一行会报错
+# int('3.1415926') # 這一行會報錯
 ```
 
     3
     3.0
     '3.1415926'
 
-`input()` 这个内建函数的功能是接收用户的键盘输入，而后将其作为字符串返回。它可以接收一个字符串作为参数，在接收用户键盘输入之前，会把这个参数输出到屏幕，作为给用户的提示语。这个参数是可选参数，直接写 `input()`，即，没有提供参数，那么它在要求用户输入的时候，就没有提示语。
+`input()` 這個內建函數的功能是接收用戶的鍵盤輸入，而後將其作為字符串返回。它可以接收一個字符串作為參數，在接收用戶鍵盤輸入之前，會把這個參數輸出到屏幕，作為給用戶的提示語。這個參數是可選參數，直接寫 `input()`，即，冇有提供參數，那麼它在要求用戶輸入的時候，就冇有提示語。
 
-以下代码会报错，因为 `age < 18` 不是合法的逻辑表达式，因为 `age` 是由 `input()` 传递过来的字符串；于是，它不是数字，那么它不可以与数字比较……
+以下代碼會報錯，因為 `age < 18` 不是合法的邏輯錶達式，因為 `age` 是由 `input()` 傳遞過來的字符串；於是，它不是數字，那麼它不可以與數字比較……
 
 ```python
 age = input('Please tell me your age: ')
@@ -126,22 +125,22 @@ else:
 ```
 
     Please tell me your age:  19
-    
+
     ---------------------------------------------------------------------------
-    
+
     TypeError                                 Traceback (most recent call last)
-    
+
     <ipython-input-9-0573fe379e83> in <module>
           1 age = input('Please tell me your age: ')
     ----> 2 if age < 18:
           3     print('I can not sell you drinks...')
           4 else:
           5     print('Have a nice drink!')
-    
+
     TypeError: '<' not supported between instances of 'str' and 'int'
 
-要改成这样才可能行：
-为什么是可能行而不是一定行？如果用户 `input` 键盘输入的是 `eighteen` 或者 ` 十八 ` 等，依然会导致 `int()` 失败并得到 `ValueError` 的报错。用户输入的不可控，可能会导致千奇百怪的报错。但在这里，我们先简化处理，在引导语中加入一个正确的示例并默认用户会按引导语正确输入。
+要改成這樣才可能行：
+為什麼是可能行而不是一定行？如果用戶 `input` 鍵盤輸入的是 `eighteen` 或者 `十八` 等，依然會導緻 `int()` 失敗並得到 `ValueError` 的報錯。用戶輸入的不可控，可能會導緻仟奇百怪的報錯。但在這裏，我們先簡化處理，在引導語中加入一個正確的示例並默認用戶會按引導語正確輸入。
 
 ```python
 age = int(input('''Please tell me your age:
@@ -156,11 +155,11 @@ else:
     Please tell me your age:  19
     Have a nice drink!
 
-**注意**：如果你用来浏览当前 `.ipynb` 文件的是那个桌面 App [Nteract](https://nteract.io/)，它目前不支持 input() 这个函数的调用……
+**註意**：如果你用來瀏覽當前 `.ipynb` 文件的是那個桌麵 App [Nteract](https://nteract.io/)，它目前不支持 input() 這個函數的調用……
 
-## 转义符
+## 轉義符
 
-有一个重要的字符，叫做 “转义符”，`\`，也有的地方把它称为 “脱字符”，因为它的英文原文是 _Escaping Character_。它本身不被当作字符，你要想在字符串里含有这个字符，得这样写 `\\`：
+有一個重要的字符，叫做 “轉義符”，`\`，也有的地方把它稱為 “脫字符”，因為它的英文原文是 _Escaping Character_。它本身不被當作字符，你要想在字符串裏含有這個字符，得這樣寫 `\\`：
 
 ```python
 '\\'
@@ -177,9 +176,9 @@ else:
            ^
     SyntaxError: EOL while scanning string literal
 
-上面这一行报错信息是 `SyntaxError: EOL while scanning string literal`。这是因为 `\'` 表示的是单引号字符 `'`（Literal）—— 是可被输出到屏幕的 `'`，而不是用来标示字符串的那个 `'` —— 别急，无论哪个初学者第一次读到前面的句子都觉得有点莫名其妙…… —— 于是，Python 编译器扫描这个 “字符串” 的时候，还没找到标示字符串末尾的另外一个 `'` 的时候就读到了 `EOL`（End Of Line）。
+上麵這一行報錯信息是 `SyntaxError: EOL while scanning string literal`。這是因為 `\'` 錶示的是單引號字符 `'`（Literal）—— 是可被輸出到屏幕的 `'`，而不是用來標示字符串的那個 `'` —— 別急，無論哪個初學者第一次讀到前麵的句子都覺得有點莫名其妙…… —— 於是，Python 編譯器掃描這個 “字符串” 的時候，還冇找到標示字符串末尾的另外一個 `'` 的時候就讀到了 `EOL`（End Of Line）。
 
-如果你想输出这么个字符串，`He said, it's fine.`，如果用双引号扩起来 `"` 倒没啥问题，但是如果用单引号扩起来就麻烦了，因为编译器会把 `it` 后面的那个单引号 `'` 当作字符串结尾。
+如果你想輸出這麼個字符串，`He said, it's fine.`，如果用雙引號擴起來 `"` 倒冇啥問題，但是如果用單引號擴起來就麻煩了，因為編譯器會把 `it` 後麵的那個單引號 `'` 當作字符串結尾。
 
 ```python
 'He said, it's fine.'
@@ -190,17 +189,17 @@ else:
                      ^
     SyntaxError: invalid syntax
 
-于是你就得用转义符 `\`：
+於是你就得用轉義符 `\`：
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
 InteractiveShell.ast_node_interactivity = "all"
 
-# 要么你这么写：
+# 要麼你這麼寫：
 'He said, it\'s fine.'
-# 要么你这么写：
+# 要麼你這麼寫：
 "He said, it's fine."
-# 要么，不管用单引号还是双引号标示字符串，都习惯于用 \' 和 \" 书写属于字符串内部的引号……
+# 要麼，不管用單引號還是雙引號標示字符串，都習慣於用 \' 和 \" 書寫屬於字符串內部的引號……
 "He said, it\'s fine."
 ```
 
@@ -208,13 +207,13 @@ InteractiveShell.ast_node_interactivity = "all"
     "He said, it's fine."
     "He said, it's fine."
 
-转义符号 `\` 的另外两个常用形式是和 `t`、`n` 连起来用，`\t` 代表制表符（就是用 TAB `⇥` 键敲出来的东西），`\n` 代表换行符（就是用 Enter `⏎` 敲出来的东西）。
+轉義符號 `\` 的另外兩個常用形式是和 `t`、`n` 連起來用，`\t` 代錶製錶符（就是用 TAB `⇥` 鍵敲出來的東西），`\n` 代錶換行符（就是用 Enter `⏎` 敲出來的東西）。
 
-由于历史原因，Linux/Mac/Windows 操作系统中，换行符号的使用各不相同。Unix 类操作系统（包括现在的 MacOS），用的是 `\n`；Windows 用的是 `\r\n`，早期苹果公司的 Macintosh 用的是 `\r`（参见 [Wikipedia: Newline](https://en.wikipedia.org/wiki/Newline)）。
+由於曆史原因，Linux/Mac/Windows 操作係統中，換行符號的使用各不相同。Unix 類操作係統（包括現在的 MacOS），用的是 `\n`；Windows 用的是 `\r\n`，早期蘋果公司的 Macintosh 用的是 `\r`（參見 [Wikipedia: Newline](https://en.wikipedia.org/wiki/Newline)）。
 
-所以，一个字符串，有两种形式，**raw** 和 **presentation**，在后者中，`\t` 被转换成制表符，`\n` 被转换成换行。
+所以，一個字符串，有兩種形式，**raw** 和 **presentation**，在後者中，`\t` 被轉換成製錶符，`\n` 被轉換成換行。
 
-在写程序的过程中，我们在代码中写的是 _raw_，而例如当我们调用 `print()` 将字符串输出到屏幕上时，是 _presentation_：
+在寫程序的過程中，我們在代碼中寫的是 _raw_，而例如當我們調用 `print()` 將字符串輸出到屏幕上時，是 _presentation_：
 
 ```python
 s = "He said, it\'s fine." # raw
@@ -223,13 +222,14 @@ print(s)                   # presentation
 
     He said, it's fine.
 
-以后有时间去看看这两个内建函数，能了解更多细节：
-> * **ascii**(_object_) https://docs.python.org/3/library/functions.html#ascii
-> * **repr**(_object_) https://docs.python.org/3/library/functions.html#repr
+以後有時間去看看這兩個內建函數，能了解更多細節：
+
+> - **ascii**(_object_) https://docs.python.org/3/library/functions.html#ascii
+> - **repr**(_object_) https://docs.python.org/3/library/functions.html#repr
 
 ## 字符串的操作符
 
-字符串可以用空格 `' '` 或者 `+` 拼接：
+字符串可以用空格 `' '` 或者 `+` 拚接：
 
 ```python
 'Hey!' + ' ' + 'You!' # 使用操作符 +
@@ -238,12 +238,12 @@ print(s)                   # presentation
     'Hey! You!'
 
 ```python
-'Hey!' 'You!' # 空格与 + 的作用是相同的。
+'Hey!' 'You!' # 空格與 + 的作用是相同的。
 ```
 
     'Hey!You!'
 
-字符串还可以与整数倍操作符 `*` 操作，`'Ha' * 3` 的意思是说，把字符串 `'Ha'` 复制三遍：
+字符串還可以與整數倍操作符 `*` 操作，`'Ha' * 3` 的意思是說，把字符串 `'Ha'` 複製三遍：
 
 ```python
 'Ha' * 3
@@ -257,7 +257,7 @@ print(s)                   # presentation
 
     '3.143.143.14'
 
-字符串还可以用 `in` 和 `not in` 操作符 —— 看看某个字符或者字符串是否被包含在某个字符串中，返回的是布尔值：
+字符串還可以用 `in` 和 `not in` 操作符 —— 看看某個字符或者字符串是否被包含在某個字符串中，返回的是佈爾值：
 
 ```python
 'o' in 'Hey, You!'
@@ -267,14 +267,14 @@ print(s)                   # presentation
 
 ## 字符串的索引
 
-字符串是由一系列的字符构成的。在 Python 当中，有一个容器（Container）的概念，这个概念前面提到过，后面还会深入讲解。现在需要知道的是，字符串是容器的一种；容器可分为两种，有序的和无序的 —— 字符串属于**有序容器**。
+字符串是由一係列的字符構成的。在 Python 當中，有一個容器（Container）的概念，這個概念前麵提到過，後麵還會深入講解。現在需要知道的是，字符串是容器的一種；容器可分為兩種，有序的和無序的 —— 字符串屬於**有序容器**。
 
-字符串里的每个字符，对应着一个从 `0` 开始的索引。比较有趣的是，索引可以是负数：
+字符串裏的每個字符，對應著一個從 `0` 開始的索引。比較有趣的是，索引可以是負數：
 
-| 0    | 1    | 2    | 3    | 4    | 5    |
-| ---- | ---- | ---- | ---- | ---- | ---- |
-| P    | y    | t    | h    | o    | n    |
-| -6   | -5   | -4   | -3   | -2   | -1   |
+| 0   | 1   | 2   | 3   | 4   | 5   |
+| --- | --- | --- | --- | --- | --- |
+| P   | y   | t   | h   | o   | n   |
+| -6  | -5  | -4  | -3  | -2  | -1  |
 
 ```python
 s = 'Python'
@@ -289,14 +289,14 @@ for char in s:
     4 o
     5 n
 
-对于有序容器中的元素 —— 字符串就是字符的有序容器 —— 由于它们是有索引的，所以我们可以根据索引提取容器中的值，你可以把 `[]` 当作是有序容器的操作符之一，我们姑且将其称为 “*索引操作符*”。注意以下代码第 3 行中，`s` 后面的 `[]`，以及里面的变量 `i`：
+對於有序容器中的元素 —— 字符串就是字符的有序容器 —— 由於它們是有索引的，所以我們可以根據索引提取容器中的值，你可以把 `[]` 當作是有序容器的操作符之一，我們姑且將其稱為 “_索引操作符_”。註意以下代碼第 3 行中，`s` 後麵的 `[]`，以及裏麵的變量 `i`：
 
 ```python
 s = 'Python'
 for i in range(len(s)):
     print(s[i])
 
-#上面的代码仅是为了演示索引操作符的使用，更简洁的写法是：
+#上麵的代碼僅是為了演示索引操作符的使用，更簡潔的寫法是：
 for i in s:
     print(i)
 ```
@@ -308,15 +308,15 @@ for i in s:
     o
     n
 
-我们可以使用*索引操作符*根据*索引***提取**字符串这个*有序容器*中的*一个或多个元素*，即，其中的字符或字符串。这个 “提取” 的动作有个专门的术语，叫做 “Slicing”（切片）。索引操作符 `[]` 中可以有一个、两个或者三个整数参数，如果有两个参数，需要用 `:` 隔开。它最终可以写成以下 4 种形式：
+我們可以使用*索引操作符*根據\*索引**\*提取**字符串這個*有序容器*中的*一個或多個元素*，即，其中的字符或字符串。這個 “提取” 的動作有個專門的術語，叫做 “Slicing”（切片）。索引操作符 `[]` 中可以有一個、兩個或者三個整數參數，如果有兩個參數，需要用 `:` 隔開。它最終可以寫成以下 4 種形式：
 
-> * `s[index]` —— 返回索引值为 `index` 的那个字符
-> * `s[start:]` —— 返回从索引值为 `start` 开始一直到字符串末尾的所有字符
-> * `s[start:stop]` —— 返回从索引值为 `start` 开始一直到索引值为 `stop` 的那个字符*之前*的所有字符
-> * `s[:stop]` —— 返回从字符串开头一直到索引值为 `stop` 的那个字符*之前*的所有字符
-> * `s[start:stop:step]` —— 返回从索引值为 `start` 开始一直到索引值为 `stop` 的那个字符*之前*的，以 `step` 为步长提取的所有字符
+> - `s[index]` —— 返回索引值為 `index` 的那個字符
+> - `s[start:]` —— 返回從索引值為 `start` 開始一直到字符串末尾的所有字符
+> - `s[start:stop]` —— 返回從索引值為 `start` 開始一直到索引值為 `stop` 的那個字符*之前*的所有字符
+> - `s[:stop]` —— 返回從字符串開頭一直到索引值為 `stop` 的那個字符*之前*的所有字符
+> - `s[start:stop:step]` —— 返回從索引值為 `start` 開始一直到索引值為 `stop` 的那個字符*之前*的，以 `step` 為步長提取的所有字符
 
-提醒：无论是 `range(1,2)`，或者 `random.randrange(100, 1000)` 又或者 `s[start:stop]` 都有一个相似的规律，包含左侧的 `1`, `100`, `start`，不包含右侧的 `2`, `1000`, `stop`。
+提醒：無論是 `range(1,2)`，或者 `random.randrange(100, 1000)` 又或者 `s[start:stop]` 都有一個相似的規律，包含左側的 `1`, `100`, `start`，不包含右側的 `2`, `1000`, `stop`。
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -336,9 +336,9 @@ s[1:5:2]
     'Pytho'
     'yh'
 
-## 处理字符串的内建函数
+## 處理字符串的內建函數
 
-[Python 内建函数](https://docs.python.org/3/library/functions.html#slice)中，把字符串当做处理对象的有：`ord()`、`input()`、`int()`、`float()`、`len()`、`print()`。再次注意，`ord()` 只接收单个字符为参数。
+[Python 內建函數](https://docs.python.org/3/library/functions.html#slice)中，把字符串當做處理對象的有：`ord()`、`input()`、`int()`、`float()`、`len()`、`print()`。再次註意，`ord()` 隻接收單個字符為參數。
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -347,10 +347,10 @@ InteractiveShell.ast_node_interactivity = "all"
 ord('\n')
 ord('\t')
 ord('\r')
-chr(65) # 与 ord() 相对的函数
-s = input('请照抄一遍这个数字 3.14: ')
+chr(65) # 與 ord() 相對的函數
+s = input('請照抄一遍這個數字 3.14: ')
 int('3')
-# int(s) 这一句会报错…… 所以暂时注释掉了
+# int(s) 這一句會報錯…… 所以暫時註釋掉了
 float(s) * 9
 len(s)
 print(s*3)
@@ -360,29 +360,29 @@ print(s*3)
     9
     13
     'A'
-    请照抄一遍这个数字 3.14:  3.14
+    請照抄一遍這個數字 3.14:  3.14
     3
     28.26
     4
     3.143.143.14
 
-## 处理字符串的 Method
+## 處理字符串的 Method
 
-在 Python 中，字符串是一个**对象** —— 更准确地讲，是 str 类（`Class str`）的对象。
+在 Python 中，字符串是一個**對象** —— 更準確地講，是 str 類（`Class str`）的對象。
 
-第一部分尚未读完的你，暂时不用了解对象究竟是什么；只需要知道的是，一个对象的内部有很多函数…… 这些写在对象内部的函数，有个专门的名称，类的**方法**（Method）。问题在于，在讲解编程的内容里，“方法” 这个词（比如，处理数值的*方法*是……）随处可见；所以，**为了避免歧义**，以后的文字里，提到 “类的方法” 的时候，直接用 **Method** 这个英文单词……
+第一部分尚未讀完的你，暫時不用了解對象究竟是什麼；隻需要知道的是，一個對象的內部有很多函數…… 這些寫在對象內部的函數，有個專門的名稱，類的**方法**（Method）。問題在於，在講解編程的內容裏，“方法” 這個詞（比如，處理數值的*方法*是……）隨處可見；所以，**為了避免歧義**，以後的文字裏，提到 “類的方法” 的時候，直接用 **Method** 這個英文單詞……
 
-字符串有很多可以调用的 Methods。以下介绍的 `str` Methods，在官方文档 "[Text Sequence Type](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)" 中都可以找到。
+字符串有很多可以調用的 Methods。以下介紹的 `str` Methods，在官方文檔 "[Text Sequence Type](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)" 中都可以找到。
 
-调用 str 类的 Methods 是使用 `.` 这个符号，比如：
+調用 str 類的 Methods 是使用 `.` 這個符號，比如：
 
 ```python
 'Python'.upper()
 ```
 
-### 大小写转换
+### 大小寫轉換
 
-转换字符串大小写的是 `str.upper()`、`str.lower()` 和 `str.swapcase()`，以及 `str.casefold()`；另外，还有专门针对行首字母大写的 `str.capitalize()` 和针对每个词的首字母大写的 `str.title()`：
+轉換字符串大小寫的是 `str.upper()`、`str.lower()` 和 `str.swapcase()`，以及 `str.casefold()`；另外，還有專門針對行首字母大寫的 `str.capitalize()` 和針對每個詞的首字母大寫的 `str.title()`：
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -390,34 +390,34 @@ InteractiveShell.ast_node_interactivity = "all"
 
 'Now is better than never.'.upper()
 
-# 在 Python 命令行工具之中，单个下划线，是个特殊变量；
-# 保存着最近的语句或者表达式的结果
-# 上一个 Cell 执行过后，_ 中保存着 'NOW IS BETTER THAN NEVER.'
+# 在 Python 命令行工具之中，單個下劃線，是個特殊變量；
+# 保存著最近的語句或者錶達式的結果
+# 上一個 Cell 執行過後，_ 中保存著 'NOW IS BETTER THAN NEVER.'
 
 _.lower()
 ```
 
     'NOW IS BETTER THAN NEVER.'
-    
+
     'now is better than never.'
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
 InteractiveShell.ast_node_interactivity = "all"
 
-# casefold() 也是转换成小写，但它能处理更多欧洲语言字符
+# casefold() 也是轉換成小寫，但它能處理更多歐洲語言字符
 
-'ß'.casefold()           # 德语字符中，大写 ß 的小写形式是 ss
+'ß'.casefold()           # 德語字符中，大寫 ß 的小寫形式是 ss
 len('ß'.casefold())
-'ß'.lower()              # lower() 对这类字符无能为力……
+'ß'.lower()              # lower() 對這類字符無能為力……
 len('ß'.lower())
 # casefold
-'\u0132'                # Ĳ 这个字符的 Unicode 编码
+'\u0132'                # Ĳ 這個字符的 Unicode 編碼
 '\u0132'.casefold()
-'\u0132'.lower()        # 对这个字符来说，lower() 和 casefold 的效果一样
+'\u0132'.lower()        # 對這個字符來說，lower() 和 casefold 的效果一樣
 len('\u0132'.casefold())
 
-# 这是一篇有用的文章：
+# 這是一篇有用的文章：
 # Truths programmers should know about case
 # https://www.b-list.org/weblog/2018/nov/26/case/
 ```
@@ -436,8 +436,8 @@ from IPython.core.interactiveshell import InteractiveShell
 InteractiveShell.ast_node_interactivity = "all"
 
 s = 'Now is better than never.'
-s.capitalize() # 句首字母大写
-s.title() # 每个单词首字母大写
+s.capitalize() # 句首字母大寫
+s.title() # 每個單詞首字母大寫
 ```
 
     'Now is better than never.'
@@ -445,7 +445,7 @@ s.title() # 每个单词首字母大写
 
 ```python
 s = 'Now is better than never.'
-s.swapcase() # 逐个字符更替大小写
+s.swapcase() # 逐個字符更替大小寫
 s.title()
 s.title().swapcase()
 ```
@@ -454,41 +454,41 @@ s.title().swapcase()
     'Now Is Better Than Never.'
     'nOW iS bETTER tHAN nEVER.'
 
-另外，还有个 `str.encode()` 在处理非英文字符串（比如中文）的时候，经常会用到：
+另外，還有個 `str.encode()` 在處理非英文字符串（比如中文）的時候，經常會用到：
 
 ```python
 # str.encode(encoding="utf-8", errors="strict")
-# 关于更多可能的 encoding list, 请参阅：
+# 關於更多可能的 encoding list, 請參閱：
 # https://docs.python.org/3/library/codecs.html#standard-encodings
-s = '简单优于复杂。'
+s = '簡單優於複雜。'
 s.encode()
 ```
 
     b'\xe7\xae\x80\xe5\x8d\x95\xe4\xbc\x98\xe4\xba\x8e\xe5\xa4\x8d\xe6\x9d\x82\xe3\x80\x82'
 
-### 搜索与替换
+### 搜索與替換
 
-让我们从 `str.count()` 这个搜寻子字符串出现次数的 Method（即，`str` 这个 `Class` 中定义的函数）开始。
+讓我們從 `str.count()` 這個搜尋子字符串出現次數的 Method（即，`str` 這個 `Class` 中定義的函數）開始。
 
-官方文档是这么写的：
+官方文檔是這麼寫的：
 
 > `str.count(sub[,start[,end]])`
 
-下面的函数说明加了默认值，以便初次阅读更容易理解：
+下麵的函數說明加了默認值，以便初次閱讀更容易理解：
 
 > `str.count(sub [,start=0[, end=len(str)]])`
 
-这里的方括号 `[]` 表示该参数可选；方括号里再次嵌套了一个方括号，这个意思是说，在这个可选参数 `start` 出现的情况下，还可以再有一个可选参数 `end`；
+這裏的方括號 `[]` 錶示該參數可選；方括號裏再次嵌套了一個方括號，這個意思是說，在這個可選參數 `start` 出現的情況下，還可以再有一個可選參數 `end`；
 
-而 `=` 表示该参数有个默认值。上述这段说明如果你感到熟悉的话，说明前面的内容确实阅读到位了…… 与大量 “前置引用” 相伴随的是知识点的重复出现。
+而 `=` 錶示該參數有個默認值。上述這段說明如果你感到熟悉的話，說明前麵的內容確實閱讀到位了…… 與大量 “前置引用” 相伴隨的是知識點的重複出現。
 
-> * 只给定 `sub` 一个参数的话，于是从第一个字符开始搜索到字符串结束；
-> * 如果，随后给定了一个可选参数的话，那么它是 `start`，于是从 `start` 开始，搜索到字符串结束；
-> * 如果 `start` 之后还有参数的话，那么它是 `end`；于是从 `start` 开始，搜索到 `end - 1` 结束（即不包含索引值为 `end` 的那个字符）。
+> - 隻給定 `sub` 一個參數的話，於是從第一個字符開始搜索到字符串結束；
+> - 如果，隨後給定了一個可選參數的話，那麼它是 `start`，於是從 `start` 開始，搜索到字符串結束；
+> - 如果 `start` 之後還有參數的話，那麼它是 `end`；於是從 `start` 開始，搜索到 `end - 1` 結束（即不包含索引值為 `end` 的那個字符）。
 >
-> 返回值为字符串中 `sub` 出现的次数。
+> 返回值為字符串中 `sub` 出現的次數。
 
-注意：字符串中第一个字符的索引值是 `0`。
+註意：字符串中第一個字符的索引值是 `0`。
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -505,7 +505,7 @@ s.lower().count('mp', 10, 30)
     3
     1
 
-以下是 `str` 的搜索与替换的 Methods：`str.find()`, `str.rfind()`, `str.index()` 的示例：
+以下是 `str` 的搜索與替換的 Methods：`str.find()`, `str.rfind()`, `str.index()` 的示例：
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -517,30 +517,30 @@ s = """Simple is better than complex.
 Complex is better than complicated."""
 s.lower().find('mpl')
 s.lower().find('mpl', 10)
-s.lower().find('mpl', 10, 20) # 没有找到就返回 -1
+s.lower().find('mpl', 10, 20) # 冇有找到就返回 -1
 print()
 
 print('Example of str.rfind():')
 # str.rfind(sub[, start[, end]])
-# rfind() 返回最后 sub 出现的那次的位置；find()是最早的那次
+# rfind() 返回最後 sub 出現的那次的位置；find()是最早的那次
 s.lower().rfind('mpl')
 s.lower().rfind('mpl', 10)
-s.lower().rfind('mpl', 10, 20) # 没有找到就返回 -1
+s.lower().rfind('mpl', 10, 20) # 冇有找到就返回 -1
 print()
 
 print('Example of str.index():')
 # str.index(sub[, start[, end]])
-# 作用与 find() 相同，但如果没找到的话，会触发 ValueError 异常
+# 作用與 find() 相同，但如果冇找到的話，會觸發 ValueError 異常
 # https://docs.python.org/3/library/exceptions.html#ValueError
 s.lower().index('mpl')
 # str.rindex(sub[, start[, end]])
-# 作用与 rfind() 相同，但如果没找到的话，会触发 ValueError 异常
+# 作用與 rfind() 相同，但如果冇找到的話，會觸發 ValueError 異常
 s.lower().rindex('mpl')
 print()
 ```
 
     Example of str.find():
-    
+
     2
     24
     -1
@@ -552,7 +552,7 @@ print()
     2
     56
 
-`str.startswith()` 和 `str.endswith()` 是用来判断一个*字符串*是否以某个*子字符串*起始或者结束的：
+`str.startswith()` 和 `str.endswith()` 是用來判斷一個*字符串*是否以某個*子字符串*起始或者結束的：
 
 ```python
 s = """Simple is better than complex.
@@ -574,8 +574,8 @@ print("s.lower().endswith('.', 10):", \
 print("s.lower().endswith('.', 10, 20):", \
       s.lower().endswith('.', 10, 20))
 
-# 好玩：中国人一不小心就会把这两个函数写成或者记成
-# startwith() 和 endwith() —— 少写一个 s!
+# 好玩：中國人一不小心就會把這兩個函數寫成或者記成
+# startwith() 和 endwith() —— 少寫一個 s!
 ```
 
     s.lower().startswith('S'): False
@@ -585,22 +585,22 @@ print("s.lower().endswith('.', 10, 20):", \
     s.lower().endswith('.', 10): True
     s.lower().endswith('.', 10, 20): False
 
-为了找到位置而进行搜索之前，你可能经常需要事先确认需要寻找的字符串在寻找对象中是否存在，这个时候，可以用 `in` 操作符：
+為了找到位置而進行搜索之前，你可能經常需要事先確認需要尋找的字符串在尋找對象中是否存在，這個時候，可以用 `in` 操作符：
 
 ```python
 s = """Simple is better than complex.
 Complex is better than complicated."""
-# 如果你只想知道 “有没有”，而无需知道 “在哪里”，那么可以用：
+# 如果你隻想知道 “有冇有”，而無需知道 “在哪裏”，那麼可以用：
 print('mpl' in s)
 ```
 
     True
 
-能搜索，就应该能替换 —— `str.replace()`，它的函数说明是这样的：
+能搜索，就應該能替換 —— `str.replace()`，它的函數說明是這樣的：
 
 > `str.replace(old, new[, count])`
 
-用 `new` 替换 `old`，替换 `count` 个实例（实例：exmpale，每次处理的对象就是实例，即具体的操作对象），其中，`count` 这个参数是可选的。
+用 `new` 替換 `old`，替換 `count` 個實例（實例：exmpale，每次處理的對象就是實例，即具體的操作對象），其中，`count` 這個參數是可選的。
 
 ```python
 s = """Simple is better than complex.
@@ -612,15 +612,15 @@ print(s.lower().replace('mp', '[ ]', 2))
 ```
 
     s.lower().replace('mp', '[ ]', 2):
-    
+
     si[ ]le is better than co[ ]lex.
     complex is better than complicated.
 
-另外，还有个专门替换 TAB（`\t`）的 Method，
+另外，還有個專門替換 TAB（`\t`）的 Method，
 
 > `str.expandtabs( tabsize=8)`
 
-它的作用非常简单，就是把字符串中的 TAB（`\t`）替换成空格，默认是替换成 `8` 个空格 —— 当然你也可以指定究竟替换成几个空格
+它的作用非常簡單，就是把字符串中的 TAB（`\t`）替換成空格，默認是替換成 `8` 個空格 —— 當然你也可以指定究竟替換成幾個空格
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -639,7 +639,7 @@ s.expandtabs(2)
 
 > `str.strip([chars])`
 
-它最常用的场景是去除一个字符串首尾的所有空白，包括空格、TAB、换行符等等。
+它最常用的場景是去除一個字符串首尾的所有空白，包括空格、TAB、換行符等等。
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -651,10 +651,10 @@ s.strip()
 ```
 
     '\r \t Simple is better than complex.    \t \n'
-    
+
     'Simple is better than complex.'
 
-但是，如果给定了一个字符串作为参数，那么参数字符串中的所有字母都会被当做需要从首尾剔除的对象，直到新的首尾字母不包含在参数中，就会停止剔除：
+但是，如果給定了一個字符串作為參數，那麼參數字符串中的所有字母都會被當做需要從首尾剔除的對象，直到新的首尾字母不包含在參數中，就會停止剔除：
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -662,15 +662,15 @@ InteractiveShell.ast_node_interactivity = "all"
 
 s = "Simple is better than complex."
 s
-s.strip('Six.p')    # p 全部处理完之后，p 并不在首尾，所以原字符串中的 p 字母不受影响；
-s.strip('pSix.mle') # 这一次，首尾的 p 被处理了…… 参数中的字符顺序对结果没有影响，换成 Sipx.mle 也一样……
+s.strip('Six.p')    # p 全部處理完之後，p 並不在首尾，所以原字符串中的 p 字母不受影響；
+s.strip('pSix.mle') # 這一次，首尾的 p 被處理了…… 參數中的字符順序對結果冇有影響，換成 Sipx.mle 也一樣……
 ```
 
     'Simple is better than complex.'
     'mple is better than comple'
     ' is better than co'
 
-还可以只对左侧处理，`str.lstrip()` 或者只对右侧处理，`str.rstrip()`
+還可以隻對左側處理，`str.lstrip()` 或者隻對右側處理，`str.rstrip()`
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -679,8 +679,8 @@ InteractiveShell.ast_node_interactivity = "all"
 # str.lstrip([chars])
 s = "Simple is better than complex."
 s
-s.lstrip('Six.p')    # p 全部处理完之后，p 并不在首部，所以原字符串中的 p 字母不受影响；
-s.lstrip('pSix.mle') # 这一次，首部的 p 被处理了…… 参数中的字符顺序对结果没有影响，换成 Sipx.mle 也一样……
+s.lstrip('Six.p')    # p 全部處理完之後，p 並不在首部，所以原字符串中的 p 字母不受影響；
+s.lstrip('pSix.mle') # 這一次，首部的 p 被處理了…… 參數中的字符順序對結果冇有影響，換成 Sipx.mle 也一樣……
 ```
 
     'Simple is better than complex.'
@@ -694,8 +694,8 @@ InteractiveShell.ast_node_interactivity = "all"
 # str.rstrip([chars])
 s = "Simple is better than complex."
 s
-s.rstrip('Six.p')    # p 全部处理完之后，p 并不在尾部，所以原字符串中的 p 字母不受影响；
-s.rstrip('pSix.mle') # 这一次，尾部的 p 被处理了…… 参数中的字符顺序对结果没有影响，换成 Sipx.mle 也一样……
+s.rstrip('Six.p')    # p 全部處理完之後，p 並不在尾部，所以原字符串中的 p 字母不受影響；
+s.rstrip('pSix.mle') # 這一次，尾部的 p 被處理了…… 參數中的字符順序對結果冇有影響，換成 Sipx.mle 也一樣……
 ```
 
     'Simple is better than complex.'
@@ -704,7 +704,7 @@ s.rstrip('pSix.mle') # 这一次，尾部的 p 被处理了…… 参数中的�
 
 ### 拆分字符串
 
-在计算机里，数据一般保存在文件之中。计算机擅长处理的是 “格式化数据”，即，这些数据按照一定的格式排列 —— 电子表格、数据库，就是一种保存方式。Microsoft 的 Excel 和 Apple 的 Numbers，都可以将表格导出为 `.csv` 文件。这是文本文件，里面的每一行可能由多个数据构成，数据之间用 `,`（或 `;`、`\t`）分隔：
+在計算機裏，數據一般保存在文件之中。計算機擅長處理的是 “格式化數據”，即，這些數據按照一定的格式排列 —— 電子錶格、數據庫，就是一種保存方式。Microsoft 的 Excel 和 Apple 的 Numbers，都可以將錶格導出為 `.csv` 文件。這是文本文件，裏麵的每一行可能由多個數據構成，數據之間用 `,`（或 `;`、`\t`）分隔：
 
 ```text
 Name,Age,Location
@@ -714,13 +714,13 @@ Janny,25,Miami
 Sunny,21,Shanghai
 ```
 
-文本文件中的这样一段内容，被读进来之后，保存在某个变量，那么，那个变量的值长成这个样子：
+文本文件中的這樣一段內容，被讀進來之後，保存在某個變量，那麼，那個變量的值長成這個樣子：
 
 > `'Name,Age,Location\nJohn,18,New York\nMike,22,San Francisco\nJanny,25,Miami\nSunny,21,Shanghai'`
 
-我们可以对这样的字符串进行很多操作，最常用的比如，`str.splitlines()`, `str.split()`；还有个 `str.partition()`，有空的人可以去[官方文档](https://docs.python.org/3/library/stdtypes.html#str.partition)看看说明。
+我們可以對這樣的字符串進行很多操作，最常用的比如，`str.splitlines()`, `str.split()`；還有個 `str.partition()`，有空的人可以去[官方文檔](https://docs.python.org/3/library/stdtypes.html#str.partition)看看說明。
 
-`str.splitlines()` 返回的是个列表（List）—— 这又是一个前面曾简要提起过，但会在后面的章节才能详细讲解的概念 —— 由被拆分的每一行作为其中的元素。
+`str.splitlines()` 返回的是個列錶（List）—— 這又是一個前麵曾簡要提起過，但會在後麵的章節才能詳細講解的概念 —— 由被拆分的每一行作為其中的元素。
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -732,19 +732,19 @@ Mike,22,San Francisco
 Janny,25,Miami
 Sunny,21,Shanghai"""
 
-s                 # s 被打印出来的时候，\n 都被转换成换行了
-s.splitlines()    # 注意输出结果前后的方括号，[]，表示这个返回结果是一个 List
+s                 # s 被打印出來的時候，\n 都被轉換成換行了
+s.splitlines()    # 註意輸出結果前後的方括號，[]，錶示這個返回結果是一個 List
 ```
 
     'Name,Age,Location\nJohn,18,New York\nMike,22,San Francisco\nJanny,25,Miami\nSunny,21,Shanghai'
-    
+
     ['Name,Age,Location',
      'John,18,New York',
      'Mike,22,San Francisco',
      'Janny,25,Miami',
      'Sunny,21,Shanghai']
 
-`str.split()`, 是将一个字符串，根据分隔符进行拆分：
+`str.split()`, 是將一個字符串，根據分隔符進行拆分：
 
 > `str.split(sep=None, maxsplit=-1)`
 
@@ -758,16 +758,16 @@ Mike,22,San Francisco
 Janny,25,Miami
 Sunny,21,Shanghai"""
 
-r = s.splitlines()[2]   # 取出返回列表中索引值为 2 的那一行
+r = s.splitlines()[2]   # 取出返回列錶中索引值為 2 的那一行
 r
-r.split()               # 如果没有给 str.split() 传递参数，那么默认为用 None 分割（各种空白，比如，\t 和 \r 都被当作 None）
+r.split()               # 如果冇有給 str.split() 傳遞參數，那麼默認為用 None 分割（各種空白，比如，\t 和 \r 都被當作 None）
 r.split(sep=',')
-r.split(',')            # 上一行可以这样写。
+r.split(',')            # 上一行可以這樣寫。
 
-r.split(sep=',', maxsplit=1)  # 第二个参数指定拆分几次
-# r.split(sep=',', 1)         # 上一行不能这样写。
+r.split(sep=',', maxsplit=1)  # 第二個參數指定拆分幾次
+# r.split(sep=',', 1)         # 上一行不能這樣寫。
 r.split(sep=',', maxsplit=0)  # 0 次，即不拆分
-r.split(sep=',', maxsplit=-1) # 默认值是 -1，拆分全部
+r.split(sep=',', maxsplit=-1) # 默認值是 -1，拆分全部
 ```
 
     'Mike,22,San Francisco'
@@ -778,15 +778,15 @@ r.split(sep=',', maxsplit=-1) # 默认值是 -1，拆分全部
     ['Mike,22,San Francisco']
     ['Mike', '22', 'San Francisco']
 
-### 拼接字符串
+### 拚接字符串
 
-`str.join()` 是将来非常常用的，它的官方文档说明却很少：
+`str.join()` 是將來非常常用的，它的官方文檔說明卻很少：
 
 > `str.join(_iterable_)`
 >
 > Return a string which is the concatenation of the strings in iterable. A _[`TypeError`](https://docs.python.org/3/library/exceptions.html#TypeError)_ will be raised if there are any non-string values in iterable, including [`bytes`](https://docs.python.org/3/library/stdtypes.html#bytes) objects. The separator between elements is the string providing this method.
 
-它接收的参数是 [iterable](https://docs.python.org/3/glossary.html#term-iterable)，虽然你还没办法知道 iterable 究竟是什么，但这个 Method 的例子貌似可以看懂（可能你会产生 “那个方括号究竟是干什么的” 的疑问，也可能对前面章节提到的列表还有印象）：
+它接收的參數是 [iterable](https://docs.python.org/3/glossary.html#term-iterable)，雖然你還冇辦法知道 iterable 究竟是什麼，但這個 Method 的例子貌似可以看懂（可能你會産生 “那個方括號究竟是幹什麼的” 的疑問，也可能對前麵章節提到的列錶還有印象）：
 
 ```python
 s = ''
@@ -798,11 +798,11 @@ s.join(t)
 
 ### 字符串排版
 
-将字符串居中放置 —— 前提是设定整行的长度：
+將字符串居中放置 —— 前提是設定整行的長度：
 
 > `str.center(width[, fillchar])`
 
-注意，第 2 个参数可选，且只接收单个字符 —— `char` 是 _character_ 的缩写。
+註意，第 2 個參數可選，且隻接收單個字符 —— `char` 是 _character_ 的縮寫。
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -811,7 +811,7 @@ InteractiveShell.ast_node_interactivity = "all"
 s = 'Sparse is better than dense!'
 s.title().center(60)
 s.title().center(60, '=')
-s.title().center(10) # 如果宽度参数小于字符串长度，则返回原字符串
+s.title().center(10) # 如果寬度參數小於字符串長度，則返回原字符串
 
 s = 'Sparse is better than dense!'
 s.title().rjust(60)
@@ -819,21 +819,21 @@ s.title().rjust(60, '.')
 ```
 
     '                Sparse Is Better Than Dense!                '
-    
+
     '================Sparse Is Better Than Dense!================'
-    
+
     'Sparse Is Better Than Dense!'
-    
+
     '                                Sparse Is Better Than Dense!'
-    
+
     '................................Sparse Is Better Than Dense!'
 
-将字符串靠左或者靠右对齐放置：
+將字符串靠左或者靠右對齊放置：
 
-> * `str.ljust(width)`
-> * `str.rjust(width)`
+> - `str.ljust(width)`
+> - `str.rjust(width)`
 
-另外，还有个字符串 Method 是，将字符串转换成左侧由 `0` 填充的指定长度字符串。例如，这在批量生成文件名的时候就很有用……
+另外，還有個字符串 Method 是，將字符串轉換成左側由 `0` 填充的指定長度字符串。例如，這在批量生成文件名的時候就很有用……
 
 ```python
 for i in range(1, 11):
@@ -854,22 +854,22 @@ for i in range(1, 11):
 
 ### 格式化字符串
 
-所谓对字符串进行格式化，指的是将特定变量插入字符串特定位置的过程。常用的 Methods 有两个，一个是 `str.format()`，另外一个是 `f-string`。
+所謂對字符串進行格式化，指的是將特定變量插入字符串特定位置的過程。常用的 Methods 有兩個，一個是 `str.format()`，另外一個是 `f-string`。
 
 #### 使用 str.format()
 
-这个 Method 的[官方文档说明](https://docs.python.org/3/library/stdtypes.html#str.format)，你现在是死活看不懂的：
+這個 Method 的[官方文檔說明](https://docs.python.org/3/library/stdtypes.html#str.format)，你現在是死活看不懂的：
 
 > `str.format(*args, **kwargs)`
 
-参数前面多了个 `*`…… 没办法，现在讲不清楚，讲了也听不明白…… 先跳过，以下只关注怎么用这个 Method。
+參數前麵多了個 `*`…… 冇辦法，現在講不清楚，講了也聽不明白…… 先跳過，以下隻關註怎麼用這個 Method。
 
 它的作用是：
 
-> * 在一个字符串中，插入一个或者多个占位符 —— 用大括号 `{}` 括起来；
-> * 而后将 `str.format()` 相应的参数，依次插入占位符中；
+> - 在一個字符串中，插入一個或者多個佔位符 —— 用大括號 `{}` 括起來；
+> - 而後將 `str.format()` 相應的參數，依次插入佔位符中；
 
-占位符中可以使用由零开始的索引。
+佔位符中可以使用由零開始的索引。
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -878,19 +878,19 @@ InteractiveShell.ast_node_interactivity = "all"
 name = 'John'
 age = 25
 '{} is {} years old.'.format(name, age)
-# 不写占位符索引就默认每个占位符的索引从第一个开始是 0, 1, 2 ...（占位符数量 - 1)
-# '{} {}'.format(a, b) 和 '{0} {1}'.format(a, b) 是一样的。
+# 不寫佔位符索引就默認每個佔位符的索引從第一個開始是 0, 1, 2 ...（佔位符數量 - 1)
+# '{} {}'.format(a, b) 和 '{0} {1}'.format(a, b) 是一樣的。
 
 # '{0} is {2} years old.'.format(name, age)
-# 这一句会报错，因为 2 超出实际参数索引极限
+# 這一句會報錯，因為 2 超出實際參數索引極限
 
-# 两个连续使用的大括号，不被认为是占位符；且只打印出一对大括号
+# 兩個連續使用的大括號，不被認為是佔位符；且隻打印出一對大括號
 "Are you {0}? :-{{+}}".format(name)
 
 # "%s is %d years old." % (name, age)
-# 上一行这是兼容 Python 2 的老式写法，可以从此忽略……
+# 上一行這是兼容 Python 2 的老式寫法，可以從此忽略……
 
-# str.fomrat() 里可以直接写表达式……
+# str.fomrat() 裏可以直接寫錶達式……
 '{} is a grown up? {}'.format(name, age >= 18)
 ```
 
@@ -900,7 +900,7 @@ age = 25
 
 #### 使用 f-string
 
-_f-string_ 与 `str.format()` 的功用差不多，只是写法简洁一些 —— 在字符串标示之前加上一个字母 `f`：
+_f-string_ 與 `str.format()` 的功用差不多，隻是寫法簡潔一些 —— 在字符串標示之前加上一個字母 `f`：
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -918,7 +918,7 @@ f'{name} is a grown up? {age >= 18}'
     'John is 25 years old.'
     'John is a grown up? True'
 
-只不过，str.format() 的用法中，索引顺序可以任意指定，于是相对更为灵活，下面的例子只是为了演示参数位置可以任意指定：
+隻不過，str.format() 的用法中，索引順序可以任意指定，於是相對更為靈活，下麵的例子隻是為了演示參數位置可以任意指定：
 
 ```python
 name = 'John'
@@ -928,9 +928,9 @@ age = 25
 
     '25 is John years old.'
 
-### 字符串属性
+### 字符串屬性
 
-字符串还有一系列的 Methods，返回的是布尔值，用来判断字符串的构成属性：
+字符串還有一係列的 Methods，返回的是佈爾值，用來判斷字符串的構成屬性：
 
 ```python
 # str.isalnum()
@@ -942,8 +942,8 @@ print("'abcdefghij'.isalpha():", \
       'abcdefghij'.isalpha())
 
 # str.isascii()
-print("'山巅一寺一壶酒'.isascii():", \
-      '山巅一寺一壶酒'.isascii())
+print("'山巔一寺一壺酒'.isascii():", \
+      '山巔一寺一壺酒'.isascii())
 
 # str.isdecimal()
 print("'0.123456789'.isdecimal():", \
@@ -951,7 +951,7 @@ print("'0.123456789'.isdecimal():", \
 
 # str.isdigit()
 print("'0.123456789'.isdigit():", \
-      '0.1234567890'.isdigit())       #  注意，如果字符串是 identifier，返回值也是 False
+      '0.1234567890'.isdigit())       #  註意，如果字符串是 identifier，返回值也是 False
 
 # str.isnumeric()
 print("'0.123456789'.isnumeric():", \
@@ -984,7 +984,7 @@ print("'for'.isidentifier():", \
 
     '1234567890'.isalnum(): True
     'abcdefghij'.isalpha(): True
-    '山巅一寺一壶酒'.isascii(): False
+    '山巔一寺一壺酒'.isascii(): False
     '0.123456789'.isdecimal(): False
     '0.123456789'.isdigit(): False
     '0.123456789'.isnumeric(): False
@@ -995,60 +995,61 @@ print("'for'.isidentifier():", \
     '	'.isspace(): True
     'for'.isidentifier(): True
 
-## 总结
+## 總結
 
-这一章节显得相当繁杂。然而，这一章和下一章（关于容器），都是 “用来锻炼自己耐心的好材料”……
+這一章節顯得相當繁雜。然而，這一章和下一章（關於容器），都是 “用來鍛煉自己耐心的好材料”……
 
-不过，若是自己动手整理成一个表格，总结归纳一下这一章节的内容，你就会发现其实没多繁杂，总之就还是那点事，怎么处理字符串？用操作符、用内建函数，用 Methods。只不过，字符串的操作符和数值的操作符不一样 —— 类型不一样，操作符就当然不一样了么！—— 最不一样的地方是，字符串是有序容器的一种，所以，它有索引，所以可以根据索引提取…… 至于剩下的么，就是很常规的了，用函数处理，用 Methods 处理，只不过，Methods 相对多了一点而已。
+不過，若是自己動手整理成一個錶格，總結歸納一下這一章節的內容，你就會發現其實冇多繁雜，總之就還是那點事，怎麼處理字符串？用操作符、用內建函數，用 Methods。隻不過，字符串的操作符和數值的操作符不一樣 —— 類型不一樣，操作符就當然不一樣了麼！—— 最不一樣的地方是，字符串是有序容器的一種，所以，它有索引，所以可以根據索引提取…… 至於剩下的麼，就是很常規的了，用函數處理，用 Methods 處理，隻不過，Methods 相對多了一點而已。
 
-整理成表格之后，就会发现想要全部记住其实并没多难……
+整理成錶格之後，就會發現想要全部記住其實並冇多難……
 
-> * 为了表格在一屏中可以正确显示，本来应该规规矩矩写 `str.xxx`，但写成了 `s.xxx`……
-> * 另外，操作那一行，为了分类记忆方便，把 `len()` 和 `s.join()` 也放进去了……
+> - 為了錶格在一屏中可以正確顯示，本來應該規規矩矩寫 `str.xxx`，但寫成了 `s.xxx`……
+> - 另外，操作那一行，為了分類記憶方便，把 `len()` 和 `s.join()` 也放進去了……
 
 ![](https://raw.githubusercontent.com/selfteaching/the-craft-of-selfteaching/master/images/string-concepts.png?raw=true)
 
-“记住” 的方法并不是马上就只盯着表格看…… 正确方法是反复阅读这一章内容中的代码，并逐一运行，查看输出结果；还要顺手改改看看，多多体会。多次之后，再看着表格回忆知识点，直到牢记为止。
+“記住” 的方法並不是馬上就隻盯著錶格看…… 正確方法是反複閱讀這一章內容中的代碼，並逐一運行，查看輸出結果；還要順手改改看看，多多體會。多次之後，再看著錶格回憶知識點，直到牢記為止。
 
-## 为什么数值没有像字符串值这样详细论述？
+## 為什麼數值冇有像字符串值這樣詳細論述？
 
-上一章中，我们概括地讲了各种类型的值的运算。而后并没有继续深入讲解数字的运算，而是直接 “跳” 到了这一章关于字符串的内容。其实，只要一张表格和一个列表就足够了（因为之前零零散散都讲过）：
+上一章中，我們概括地講了各種類型的值的運算。而後並冇有繼續深入講解數字的運算，而是直接 “跳” 到了這一章關於字符串的內容。其實，隻要一張錶格和一個列錶就足夠了（因為之前零零散散都講過）：
 
-Python 针对数字常用的操作符和内建函数，按照**优先级**从低到高排列：
+Python 針對數字常用的操作符和內建函數，按照**優先級**從低到高排列：
 
-|名称  | 操作               | 结果                                                       | 官方文档链接                                           |
-| --- | ----------------- | ------------------------------------------------------------| ------------------------------------------------------------ |
-| 加  | `1 + 2`           | 3                                          |                                                              |
-| 减  | `2 - 1`           | 1                                    |                                                              |
-| 乘  | `3 * 5`           | 15                                       |                                                              |
-| 除  | `6 / 2`           | 3.0                                      |                                                              |
-| 商  | `7 // 3`          | 2                              |                                                              |
-| 余  | `7 % 3`           | 1                              |                                                              |
-| 负  | `-6`              | -6                             |                                                              |
-| 正  | `+6`              | 6                              |                                                              |
-| 绝对值 | `abs(-1)`         | 1                           | [`abs()`](https://docs.python.org/3/library/functions.html#abs) |
-| 转换为整数| `int(3.14)`       | 3                        | [`int()`](https://docs.python.org/3/library/functions.html#int) |
-| 转换为浮点数 | `float(3)`        | 3.0                   | [`float()`](https://docs.python.org/3/library/functions.html#float) |
-| 商余 | `divmod(7, 3)`    | 2, 1                         | [`divmod()`](https://docs.python.org/3/library/functions.html#divmod) |
-| 幂 | `pow(2, 10)`      | 1024                          | [`pow()`](https://docs.python.org/3/library/functions.html#pow) |
-| 幂 | `3 ** 2`          | 9                             |                                                              |
+| 名稱         | 操作           | 結果 | 官方文檔鏈接                                                          |
+| ------------ | -------------- | ---- | --------------------------------------------------------------------- |
+| 加           | `1 + 2`        | 3    |                                                                       |
+| 減           | `2 - 1`        | 1    |                                                                       |
+| 乘           | `3 * 5`        | 15   |                                                                       |
+| 除           | `6 / 2`        | 3.0  |                                                                       |
+| 商           | `7 // 3`       | 2    |                                                                       |
+| 餘           | `7 % 3`        | 1    |                                                                       |
+| 負           | `-6`           | -6   |                                                                       |
+| 正           | `+6`           | 6    |                                                                       |
+| 絕對值       | `abs(-1)`      | 1    | [`abs()`](https://docs.python.org/3/library/functions.html#abs)       |
+| 轉換為整數   | `int(3.14)`    | 3    | [`int()`](https://docs.python.org/3/library/functions.html#int)       |
+| 轉換為浮點數 | `float(3)`     | 3.0  | [`float()`](https://docs.python.org/3/library/functions.html#float)   |
+| 商餘         | `divmod(7, 3)` | 2, 1 | [`divmod()`](https://docs.python.org/3/library/functions.html#divmod) |
+| 冪           | `pow(2, 10)`   | 1024 | [`pow()`](https://docs.python.org/3/library/functions.html#pow)       |
+| 冪           | `3 ** 2`       | 9    |                                                                       |
 
-Python 用来处理数值的内建函数：
+Python 用來處理數值的內建函數：
 
-> * `abs(n)` 函数返回参数 `n` 的*绝对值*；
-> * `int(n)` 用来将*浮点数字* `n` 转换成*整数*；
-> * `float(n)` 用来将*整数* `n` 转换成*浮点数字*；
-> * `divmod(n, m)` 用来计算  `n`  除以  `m`，返回两个整数，一个是*商*，另外一个是*余*；
-> * `pow(n, m)` 用来做乘方运算，返回 `n` 的 `m` *次方*；
-> * `round(n)` 返回离浮点数字 `n` 最近的那个*整数*。
+> - `abs(n)` 函數返回參數 `n` 的*絕對值*；
+> - `int(n)` 用來將*浮點數字* `n` 轉換成*整數*；
+> - `float(n)` 用來將*整數* `n` 轉換成*浮點數字*；
+> - `divmod(n, m)` 用來計算 `n` 除以 `m`，返回兩個整數，一個是*商*，另外一個是*餘*；
+> - `pow(n, m)` 用來做乘方運算，返回 `n` 的 `m` _次方_；
+> - `round(n)` 返回離浮點數字 `n` 最近的那個*整數*。
 
-Python 做更为复杂的数学计算的模块（Module）是 math module，参阅：
+Python 做更為複雜的數學計算的模塊（Module）是 math module，參閱：
 
 > https://docs.python.org/3/library/math.html
 
------
-**脚注**
+---
 
-<a name='fn1'>[1]</a>：请查阅 https://en.wikipedia.org/wiki/Unicode
+**腳註**
+
+<a name='fn1'>[1]</a>：請查閱 https://en.wikipedia.org/wiki/Unicode
 
 <a href='#fn1b'><small>↑Back to Content↑</small></a>

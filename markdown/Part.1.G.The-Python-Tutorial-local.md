@@ -1,96 +1,95 @@
-
 # 官方教程：The Python Tutorial
 
-虽然，第一部分总计七章关于编程内容的编排是非常特别且相当有效的：
+雖然，第一部分總計七章關於編程內容的編排是非常特別且相當有效的：
 
-> * 它并没有像其它教程那样，从 “Hello world!” 入手；
-> * 它也没有使用与市面上所有编程教材一样的内容先后顺序；
-> * 它一上来就让你明白了程序的灵魂：布尔运算；
-> * 它很快就让你明白有意义的程序其实只有两个核心构成：运算和流程控制；
-> * 它让你很快理解函数从另外一个角度看只不过是 “程序员作为用户所使用的产品”；
-> * 它让你重点掌握了最初级却最重要的数据类型，字符串；
-> * 它让你从容器的角度了解了 Python 中绝大多数 “重要的数据类型”；
-> * 最重要的是，它不承诺你 “速成”，但承诺 “领你入门”…… 显然，它做到了。
+> - 它並冇有像其它教程那樣，從 “Hello world!” 入手；
+> - 它也冇有使用與市麵上所有編程教材一樣的內容先後順序；
+> - 它一上來就讓你明白了程序的靈魂：佈爾運算；
+> - 它很快就讓你明白有意義的程序其實隻有兩個核心構成：運算和流程控製；
+> - 它讓你很快理解函數從另外一個角度看隻不過是 “程序員作為用戶所使用的産品”；
+> - 它讓你重點掌握了最初級卻最重要的數據類型，字符串；
+> - 它讓你從容器的角度了解了 Python 中絕大多數 “重要的數據類型”；
+> - 最重要的是，它不承諾你 “速成”，但承諾 “領你入門”…… 顯然，它做到了。
 
-但是，第一部分的内容核心目标是让你 “**脱盲**” —— 它的作用还做不到让你 “已然学会编程”，它更多是让你从此开始有能力去阅读更多的重要资源，比如，官方的教程和参考。第一部分的内容更像地图上的 “**图例**”，而不是地图本身。
+但是，第一部分的內容核心目標是讓你 “**脫盲**” —— 它的作用還做不到讓你 “已然學會編程”，它更多是讓你從此開始有能力去閱讀更多的重要資源，比如，官方的教程和參考。第一部分的內容更像地圖上的 “**圖例**”，而不是地圖本身。
 
-第一部分反复读过之后，最重要的结果就是：
+第一部分反複讀過之後，最重要的結果就是：
 
-> 现在你有能力自己查询官方文档了……
+> 現在你有能力自己查詢官方文檔了……
 
-起码，在此之后，再去阅读 [The Python Tutorial](https://docs.python.org/3/tutorial/index.html)，不那么费力了，最起码，可以靠自己理解绝大多数内容……
+起碼，在此之後，再去閱讀 [The Python Tutorial](https://docs.python.org/3/tutorial/index.html)，不那麼費力了，最起碼，可以靠自己理解絕大多數內容……
 
-在继续阅读本书内容的同时，有空就要反复翻 The Python Tutorial。
+在繼續閱讀本書內容的同時，有空就要反複翻 The Python Tutorial。
 
-## 官方文档中最重要的链接
+## 官方文檔中最重要的鏈接
 
-Python 也许是目前所有编程语言中在文档建设（Documenting）方面做得最好的（好像真的不需要在这句话后面加上 “之一”）。Python 社区为了建设完善的文档，甚至有专门的文档制作工具 —— 得益于 Python 社区从一开始就非常重视[文档规范](https://devguide.python.org/documenting/) —— [Sphinx](http://www.sphinx-doc.org/en/master/)。你在网络上最经常看到的计算机类文档，很可能都在这个网站上：[Read the Docs](https://readthedocs.org)……
+Python 也許是目前所有編程語言中在文檔建設（Documenting）方麵做得最好的（好像真的不需要在這句話後麵加上 “之一”）。Python 社區為了建設完善的文檔，甚至有專門的文檔製作工具 —— 得益於 Python 社區從一開始就非常重視[文檔規範](https://devguide.python.org/documenting/) —— [Sphinx](http://www.sphinx-doc.org/en/master/)。你在網絡上最經常看到的計算機類文檔，很可能都在這個網站上：[Read the Docs](https://readthedocs.org)……
 
-Python 的官方文档网址是：
+Python 的官方文檔網址是：
 
 > https://docs.python.org/3/
 
-其中对初学者最重要的两个链接是：
+其中對初學者最重要的兩個鏈接是：
 
-> * **[Tutorial](https://docs.python.org/3/tutorial/index.html)**: https://docs.python.org/3/tutorial/index.html
-> * **[Library Reference](https://docs.python.org/3/library/index.html)**: https://docs.python.org/3/library/index.html
+> - **[Tutorial](https://docs.python.org/3/tutorial/index.html)**: https://docs.python.org/3/tutorial/index.html
+> - **[Library Reference](https://docs.python.org/3/library/index.html)**: https://docs.python.org/3/library/index.html
 
-理论上来讲，只要有了基础的概念，自己反复阅读官方的 The Python Tutorial 是最好的，没什么入门书籍比它更好 —— 因为它的作者是 Python 的作者，那个被称为 “善意独裁者” 的 [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum)。
+理論上來講，隻要有了基礎的概念，自己反複閱讀官方的 The Python Tutorial 是最好的，冇什麼入門書籍比它更好 —— 因為它的作者是 Python 的作者，那個被稱為 “善意獨裁者” 的 [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum)。
 
-此人很帅，但更帅的是他的车牌（摘自 Guido van Rossume 的[个人主页](https://gvanrossum.github.io)）：
+此人很帥，但更帥的是他的車牌（摘自 Guido van Rossume 的[個人主頁](https://gvanrossum.github.io)）：
 
 ![](https://gvanrossum.github.io/images/license.jpg?raw=true)
 
-## 为什么一定要阅读官方文档
+## 為什麼一定要閱讀官方文檔
 
-买一两本 Python 教程是不可能完整掌握 Python 的 —— 其实，这句话里的 Python 替换成任何一种语言也是一样的。
+買一兩本 Python 教程是不可能完整掌握 Python 的 —— 其實，這句話裏的 Python 替換成任何一種語言也是一樣的。
 
-教程和官方文档的各种属性是非常不一样的，比如，针对读者群，组织方式，语言表达…… 最不一样的地方在 “全面性”。任何一本单独的教程，都不可能像官方文档那样全面。各种单独教程的优势在于，它们更多地针对初学者、入门者设计，但与此同时，在全面性、深入性上做了妥协。
+教程和官方文檔的各種屬性是非常不一樣的，比如，針對讀者群，組織方式，語言錶達…… 最不一樣的地方在 “全麵性”。任何一本單獨的教程，都不可能像官方文檔那樣全麵。各種單獨教程的優勢在於，它們更多地針對初學者、入門者設計，但與此同時，在全麵性、深入性上做了妥協。
 
-比如，在当前这本书里，不会涉及 [Bytes Object](https://docs.python.org/3/library/stdtypes.html#bytes-objects) —— 并非只有我一个人这么做，著名的 Python 教程《[Think Python: How to Think Like a Computer Scientist](http://greenteapress.com/thinkpython2/html/index.html)》、《[Dive into Python](https://linux.die.net/diveintopython/html/toc/index.html)》等等都没有涉及 Bytes Object 这个话题。
+比如，在當前這本書裏，不會涉及 [Bytes Object](https://docs.python.org/3/library/stdtypes.html#bytes-objects) —— 並非隻有我一個人這麼做，著名的 Python 教程《[Think Python: How to Think Like a Computer Scientist](http://greenteapress.com/thinkpython2/html/index.html)》、《[Dive into Python](https://linux.die.net/diveintopython/html/toc/index.html)》等等都冇有涉及 Bytes Object 這個話題。
 
-由于官方文档实际上没办法对入门者、初学者过分友好 —— 毕竟，全面、权威、准确才是它更应该做到的事情 —— 所以，很多人在刚开始的时候求助于各类非官方的教材、教程。原本应该是入门以后就理应 “只读官方文档”，或者 “第一查询对象只能是官方文档”，但在很多人那里竟然变成了 “从一开始到最后都在回避官方文档（或者说 ‘最专业的说明文字’）”，这就不好了，真的很吃亏，且自己都无法知道自己究竟吃了多少亏 —— 总以为自己已经学完了，但实际上从一开始就一点都不全面。
+由於官方文檔實際上冇辦法對入門者、初學者過分友好 —— 畢竟，全麵、權威、準確才是它更應該做到的事情 —— 所以，很多人在剛開始的時候求助於各類非官方的教材、教程。原本應該是入門以後就理應 “隻讀官方文檔”，或者 “第一查詢對象隻能是官方文檔”，但在很多人那裏竟然變成了 “從一開始到最後都在回避官方文檔（或者說 ‘最專業的說明文字’）”，這就不好了，真的很吃虧，且自己都無法知道自己究竟吃了多少虧 —— 總以為自己已經學完了，但實際上從一開始就一點都不全麵。
 
-请牢记且遵守这个原则：
+請牢記且遵守這個原則：
 
-> **第一查询对象只能是官方文档**。
+> **第一查詢對象隻能是官方文檔**。
 
-所以，当我用 Google 查询的时候，经常使用这样的格式：
+所以，當我用 Google 查詢的時候，經常使用這樣的格式：
 
 > `<queries> site:python.org`
 
-有时甚至会指定在哪个目录里搜索：
+有時甚至會指定在哪個目錄裏搜索：
 
-> `bytes site:python.org/3/library`，你试试这个连接：[bytes site:python.org/3/library](https://www.google.com/search?q=byte+site%3Apython.org%2F3%2Flibrary)
+> `bytes site:python.org/3/library`，你試試這個連接：[bytes site:python.org/3/library](https://www.google.com/search?q=byte+site%3Apython.org%2F3%2Flibrary)
 
-这个原则对任何语言都适用。将来你在学习任何新软件包（库）、语言更新后的新特性、甚至另外一个新语言的时候，都要这么做。所谓的超强自学能力，基本上就是由一些类似这样的小习惯和另外一些特别基础的方法构成的强大能力。
+這個原則對任何語言都適用。將來你在學習任何新軟件包（庫）、語言更新後的新特性、甚至另外一個新語言的時候，都要這麼做。所謂的超強自學能力，基本上就是由一些類似這樣的小習慣和另外一些特別基礎的方法構成的強大能力。
 
-## 将官方文档拉回本地
+## 將官方文檔拉回本地
 
-把 The Python Tutorial 拉回本地阅读，可能更为方便，尤其是可以用 Sphinx 重新制作之后，页面左侧可以总是显示完整的目录：
+把 The Python Tutorial 拉回本地閱讀，可能更為方便，尤其是可以用 Sphinx 重新製作之後，頁麵左側可以總是顯示完整的目錄：
 
 ![](https://raw.githubusercontent.com/selfteaching/the-craft-of-selfteaching/master/images/local-tutorial.png?raw=true)
 
-也可以把这个教程转换成 epub 格式，以便在移动设备上阅读；甚至可以把这些个页面的 `.rst` 源文件转换成 `.ipynb` 文件，以便用 Jupyter Lab 浏览时可以直接执行其中的代码……
+也可以把這個教程轉換成 epub 格式，以便在移動設備上閱讀；甚至可以把這些個頁麵的 `.rst` 源文件轉換成 `.ipynb` 文件，以便用 Jupyter Lab 瀏覽時可以直接執行其中的代碼……
 
-**注意**
+**註意**
 
-> 此页的 Code Cell 中都是可执行的 bash 命令……
+> 此頁的 Code Cell 中都是可執行的 bash 命令……
 
-在此页执行它们对你来说是没意义的 —— 因为它们的执行结果在服务器上；这其中的命令，应该在你本地计算机上的 Terminal 中执行，你才能在本地计算机上获取结果。
+在此頁執行它們對你來說是冇意義的 —— 因為它們的執行結果在服務器上；這其中的命令，應該在你本地計算機上的 Terminal 中執行，你才能在本地計算機上獲取結果。
 
-### 安装 git
+### 安裝 git
 
 ```bash
 %%bash
 which git
 git --version
 
-# 没有的话就执行以下命令安装 git
+# 冇有的話就執行以下命令安裝 git
 # conda install -c anaconda git
 ```
 
-### 下载源文件
+### 下載源文件
 
 The Python Tutorial 的源文件位置在：
 
@@ -100,25 +99,25 @@ repo 地址是：
 
 > https://github.com/python/cpython.git
 
-使用 git 将 repo 下载到 `~/Download/` 目录：
+使用 git 將 repo 下載到 `~/Download/` 目錄：
 
 ```bash
 %%bash
 cd ~/Downloads
-# 总计 175M（文件大小随版本变动），所以需要一点时间
+# 總計 175M（文件大小隨版本變動），所以需要一點時間
 git clone https://github.com/python/cpython.git
 cd cpython/Doc/tutorial
 ls
 ```
 
-### 安装 rst2ipynb
+### 安裝 rst2ipynb
 
 ```bash
 %%bash
 # rst2ipynb needs pandoc and notedown...
 which pandoc
 which notedown
-# 没有这两样东西的话，需要执行下面两行进行安装……
+# 冇有這兩樣東西的話，需要執行下麵兩行進行安裝……
 # conda install -c conda-forge pandoc
 # conda install -c conda-forge notedown
 
@@ -130,9 +129,9 @@ pip install .
 which rst2ipynb
 ```
 
-### 批量转换 rst 至 ipynb
+### 批量轉換 rst 至 ipynb
 
-这个 rst2ipynb 的程序有点讨厌，一次只能处理一个文件…… 下面是一个 bash 程序，其实将来学起来也不难，看着跟 Python 差不多…… 下面的代码执行过后会出现很多 “警告” —— 没关系，文件会正常转换的。
+這個 rst2ipynb 的程序有點討厭，一次隻能處理一個文件…… 下麵是一個 bash 程序，其實將來學起來也不難，看著跟 Python 差不多…… 下麵的代碼執行過後會出現很多 “警告” —— 冇關係，文件會正常轉換的。
 
 ```bash
 %%bash
@@ -145,9 +144,9 @@ mkdir ipynbs
 mv *.ipynb ipynbs/
 ```
 
-如此这般，你就把 rst 文件都转换成 ipynb 文件，保存在 `~/Downloads/cpython/Doc/tutorial/ipynbs/` 之中了。随便把它挪到你喜欢的什么地方。用本地的 Jupyterlab 浏览，或者用 [Nteract](https://nteract.io) App 浏览。
+如此這般，你就把 rst 文件都轉換成 ipynb 文件，保存在 `~/Downloads/cpython/Doc/tutorial/ipynbs/` 之中了。隨便把它挪到你喜歡的什麼地方。用本地的 Jupyterlab 瀏覽，或者用 [Nteract](https://nteract.io) App 瀏覽。
 
-如果以后你经常需要批量转换某个目录内的 `rst` 文件，那就把 bash function 放在 `~/.bash_profile` 文件里，在最后面追加以下代码：
+如果以後你經常需要批量轉換某個目錄內的 `rst` 文件，那就把 bash function 放在 `~/.bash_profile` 文件裏，在最後麵追加以下代碼：
 
 ```bash
 function rsti {
@@ -158,20 +157,20 @@ function rsti {
 }
 ```
 
-而后在 Terminal 里执行一遍：
+而後在 Terminal 裏執行一遍：
 
 ```bash
 source ~/.bash_profile
 ```
 
-而后，在有 `.rst` 文件的目录下输入 `rsti` 执行即可……
+而後，在有 `.rst` 文件的目錄下輸入 `rsti` 執行即可……
 
 ### 用 Sphinx 生成 html/epub 版本
 
 ```bash
 %%bash
 which sphinx-quickstart
-# 没有的话就执行下一行：
+# 冇有的話就執行下一行：
 # conda install -c anaconda sphinx
 sphinx-quickstart --version
 sphinx-quickstart --help
@@ -188,8 +187,8 @@ cd output
 make html
 make epub
 
-# 生成的 html 版本应该在 output/build/html 目录下；
-# 生成的 epub 版本应该在 output/build/epub 目录下。
+# 生成的 html 版本應該在 output/build/html 目錄下；
+# 生成的 epub 版本應該在 output/build/epub 目錄下。
 
 # sphinx-quickstart -q output \
 # --sep \
@@ -214,13 +213,13 @@ make epub
 # --no-use-make-mode
 ```
 
-用 Sphinx 这样生成的版本，支持本地目录内搜索，也确实比在网站上看更方便一点：
+用 Sphinx 這樣生成的版本，支持本地目錄內搜索，也確實比在網站上看更方便一點：
 
 ![](https://raw.githubusercontent.com/selfteaching/the-craft-of-selfteaching/master/images/search-generated-by-sphinx.png?raw=true)
 
-### 下载已经转换好的版本
+### 下載已經轉換好的版本
 
-万一有什么情况中间出错又搞不定的话，就直接下载已经转换好的版本：
+萬一有什麼情況中間出錯又搞不定的話，就直接下載已經轉換好的版本：
 
 ```bash
 %%bash
@@ -228,21 +227,21 @@ cd ~/Downloads
 git clone https://github.com/xiaolai/the-python-tutorial-in-other-formats.git
 ```
 
-### 完整的 Python Doc 制作
+### 完整的 Python Doc 製作
 
-其实，Python 的整个文档，已经是做好了制作文件的文档库：
+其實，Python 的整個文檔，已經是做好了製作文件的文檔庫：
 
 > `cpython/Doc/Makefile`
 
-只不过，将所有文件编译到一个 epub 里，在 iPad 之类的移动设备上打开有点费劲 —— 在我的设备上显示有 7701 页，翻页都要顿一顿……
+隻不過，將所有文件編譯到一個 epub 裏，在 iPad 之類的移動設備上打開有點費勁 —— 在我的設備上顯示有 7701 頁，翻頁都要頓一頓……
 
-想要使用这个官方的 `Makefile` 的话，首先确认自己已经安装过 Sphinx，其次需要补充安装一个包：
+想要使用這個官方的 `Makefile` 的話，首先確認自己已經安裝過 Sphinx，其次需要補充安裝一個包：
 
 ```bash
 pip install blurb
 ```
 
-而后在 Terminal 中转到 Doc 所在目录，执行以下命令：
+而後在 Terminal 中轉到 Doc 所在目錄，執行以下命令：
 
 ```bash
 make html

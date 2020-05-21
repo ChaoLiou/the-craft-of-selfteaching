@@ -1,7 +1,6 @@
+# 可執行的 Python 文件
 
-# 可执行的 Python 文件
-
-理论上来讲，你最终可以把任何一个程序，无论大小，都封装（或者囊括）到仅仅一个函数之中。按照惯例（Convention），这个函数的名称叫做 `main()`：
+理論上來講，你最終可以把任何一個程序，無論大小，都封裝（或者囊括）到僅僅一個函數之中。按照慣例（Convention），這個函數的名稱叫做 `main()`：
 
 ```python
 def routine_1():
@@ -33,23 +32,23 @@ if __name__ == '__main__':
     Routine 2 done.
     This is the end of the program.
 
-当一个模块（其实就是存有 Python 代码的 `.py` 文件，例如：`mycode.py`）被 `import` 语句导入的时候，这个模块的 `__name__` 就是模块名（例如：`'mycode'`）。
+當一個模塊（其實就是存有 Python 代碼的 `.py` 文件，例如：`mycode.py`）被 `import` 語句導入的時候，這個模塊的 `__name__` 就是模塊名（例如：`'mycode'`）。
 
-而当一个模块被命令行运行的时候，这个模块的 `__name__` 就被 Python 解释器设定为 `'__main__'`。
+而當一個模塊被命令行運行的時候，這個模塊的 `__name__` 就被 Python 解釋器設定為 `'__main__'`。
 
-把一个程序整个封装到 `main()` 之中，而后在模块代码里加上：
+把一個程序整個封裝到 `main()` 之中，而後在模塊代碼裏加上：
 
 ```python
 if __name__ == '__main__':
     main()
 ```
 
-这么做的结果是：
+這麼做的結果是：
 
-> 1. 当 Python 文件被当作模块，被 `import` 语句导入时，`if` 判断失败，`main()` 函数不被执行；
-> 2. 当 Python 文件被 `python -m` 运行的时候，`if` 判断成功，`main()` 函数才被执行。
+> 1. 當 Python 文件被當作模塊，被 `import` 語句導入時，`if` 判斷失敗，`main()` 函數不被執行；
+> 2. 當 Python 文件被 `python -m` 運行的時候，`if` 判斷成功，`main()` 函數才被執行。
 
-还记得那个 Python 的彩蛋吧？`this.py` 的代码如下：
+還記得那個 Python 的彩蛋吧？`this.py` 的代碼如下：
 
 ```python
 s = """Gur Mra bs Clguba, ol Gvz Crgref
@@ -81,13 +80,13 @@ for c in (65, 97):
 print("".join([d.get(c, c) for c in s]))
 ```
 
-所以，只要 `import this`，`this.py` 中的代码就被执行：
+所以，隻要 `import this`，`this.py` 中的代碼就被執行：
 
 ```python
 import this
 ```
 
-我在当前目录下，保存了一个文件 `that.py`，它的内容如下 —— 其实就是把 `this.py` 之中的代码封装到 `main()` 函数中了：
+我在當前目錄下，保存了一個文件 `that.py`，它的內容如下 —— 其實就是把 `this.py` 之中的代碼封裝到 `main()` 函數中了：
 
 ```python
 # %load that.py
@@ -125,13 +124,13 @@ if __name__ == '__main__':
     main()
 ```
 
-于是，当你在其它地方导入它的时候，`import that`，`main()` 函数的内容不会被执行：
+於是，當你在其它地方導入它的時候，`import that`，`main()` 函數的內容不會被執行：
 
 ```python
 import that
 ```
 
-但是，你在命令行中，用 `python that.py`，或者 `python -m that` 将 `that.py` 当作可执行模块运行的时候，`main()` 就会被执行 —— 注意，不要写错，`python -m that.py` 会报错的 —— 有 `-m` 参数，就不要写文件尾缀 `.py`：
+但是，你在命令行中，用 `python that.py`，或者 `python -m that` 將 `that.py` 當作可執行模塊運行的時候，`main()` 就會被執行 —— 註意，不要寫錯，`python -m that.py` 會報錯的 —— 有 `-m` 參數，就不要寫文件尾綴 `.py`：
 
 ```bash
 %%bash
@@ -143,21 +142,21 @@ python that.py
 python -m that
 ```
 
-像 `that.py` 那样把整个程序放进 `main()` 函数之后，`import that` 不会自动执行 main 函数里的代码。不过，你可以调用 that.main()：
+像 `that.py` 那樣把整個程序放進 `main()` 函數之後，`import that` 不會自動執行 main 函數裏的代碼。不過，你可以調用 that.main()：
 
 ```python
 import that
 that.main()
 ```
 
-当然，`that.py` 之中没有任何 Docstring，所以 `help(that)` 的结果是这样的：
+當然，`that.py` 之中冇有任何 Docstring，所以 `help(that)` 的結果是這樣的：
 
 ```python
 import that
 help(that)
 ```
 
-所以，之前那个从 37 万多个词汇中挑出 3700 多个字母加起来等于 100 的词汇的程序，也可以写成以下形式：
+所以，之前那個從 37 萬多個詞匯中挑出 3700 多個字母加起來等於 100 的詞匯的程序，也可以寫成以下形式：
 
 ```python
 #!/usr/bin/env python
@@ -178,19 +177,19 @@ if __name__ == '__main__':
     main('words_alpha.txt', 'results.txt')
 ```
 
-至于以上代码中的第一行，`#!/usr/bin/env python` 是怎么回事，建议你自己动手解决一下，去 Google：
+至於以上代碼中的第一行，`#!/usr/bin/env python` 是怎麼回事，建議你自己動手解決一下，去 Google：
 
 > [`python3 script executable`](https://www.google.com/search?q=python3+script+executable)
 
-你会很快弄明白的……
+你會很快弄明白的……
 
 另外，再搜索一下：
 
 > [`python3 script executable parameters retrieving`](https://www.google.com/search?q=python3+script+executable+parameters+retrieving)
 
-你就可以把以上程序改成在命令行下能够接收指定参数的 Python 可执行文件……
+你就可以把以上程序改成在命令行下能夠接收指定參數的 Python 可執行文件……
 
-顺带说，`import this` 的彩蛋有更好玩的玩法：
+順帶說，`import this` 的彩蛋有更好玩的玩法：
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -212,31 +211,31 @@ love is not True or False; love is love # True True
     True
     True
 
-在 Terminal 里输入 `python ⏎` 而后在 Interactive Shell 里逐句输入试试。`love = this` 后面的每一句，都是布尔运算，想想看为什么是那样的结果？
+在 Terminal 裏輸入 `python ⏎` 而後在 Interactive Shell 裏逐句輸入試試。`love = this` 後麵的每一句，都是佈爾運算，想想看為什麼是那樣的結果？
 
 ```python
 import this
 love = this
 
 this is love
-# True, 试试看，id(this) 和 id(love) 是同一个值
-# 即，它们的内存地址相同
+# True, 試試看，id(this) 和 id(love) 是同一個值
+# 即，它們的內存地址相同
 
 love is True
-# False, id(love) 和 id(True) 不是同一个值
+# False, id(love) 和 id(True) 不是同一個值
 love is False
 # 同上
 
 love is not True or False
-# is not 的优先级比 or 高；所以相当于是：
-# (love is not True) or False，于是返回 True
+# is not 的優先級比 or 高；所以相當於是：
+# (love is not True) or False，於是返回 True
 
 love is not True or False; love is love
-# 重复一次上一句 —— `;` 是语句分隔符
-# 而后 love is love 当然是 True
+# 重複一次上一句 —— `;` 是語句分隔符
+# 而後 love is love 當然是 True
 ```
 
-注意以下代码中，`id()` 函数的输出结果：
+註意以下代碼中，`id()` 函數的輸出結果：
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -268,7 +267,7 @@ love is not True
     4308349120
     True
 
-Python 的操作符优先级，完整表格在这里：
+Python 的操作符優先級，完整錶格在這裏：
 
 > [Operator precedence](https://docs.python.org/3/reference/expressions.html#operator-precedence)
 

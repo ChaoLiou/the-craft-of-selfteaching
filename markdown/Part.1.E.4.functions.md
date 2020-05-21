@@ -1,26 +1,25 @@
+# 函數
 
-# 函数
+函數，實際上是可被調用的完整的程序。它具備輸入、處理、輸出的功能。又因為它經常在主程序裏被調用，所以它總是更像是個子程序。
 
-函数，实际上是可被调用的完整的程序。它具备输入、处理、输出的功能。又因为它经常在主程序里被调用，所以它总是更像是个子程序。
+了解一個函數，無非是要了解它的兩個方麵：
 
-了解一个函数，无非是要了解它的两个方面：
+> - 它的**輸入**是怎麼構成的（都有哪些參數？如何指定？）；
+> - 以及它的**輸出**是什麼（返回值究竟是什麼？）……
 
-> * 它的**输入**是怎么构成的（都有哪些参数？如何指定？）；
-> * 以及它的**输出**是什么（返回值究竟是什么？）……
+從這個角度看，牛，對人類來說就是個函數，它吃的是*草*，擠出來的是*奶*…… 開玩笑了。
 
-从这个角度看，牛，对人类来说就是个函数，它吃的是*草*，挤出来的是*奶*…… 开玩笑了。
+在我們使用函數的過程中，我們常常*有意忽略*它的內部如何完成從輸入到輸出之間的*處理過程* —— 這就好像我們平日裏用燈泡一樣，大多數情況下，我們隻要知道開關的使用方法就夠了 —— 至於為什麼按到這個方嚮上燈會亮，為什麼按到另外一個方嚮上燈會滅，並不是我們作為用戶必須關心的事情……
 
-在我们使用函数的过程中，我们常常*有意忽略*它的内部如何完成从输入到输出之间的*处理过程* —— 这就好像我们平日里用灯泡一样，大多数情况下，我们只要知道开关的使用方法就够了 —— 至于为什么按到这个方向上灯会亮，为什么按到另外一个方向上灯会灭，并不是我们作为用户必须关心的事情……
+當然，如果你是設計開關的人就不一樣了，你必須知道其中的運作原理；但是，最終，你還是希望你的用戶用最簡單方便的操作界麵，而不是必須搞懂所有原理才能夠使用你所設計的産品……
 
-当然，如果你是设计开关的人就不一样了，你必须知道其中的运作原理；但是，最终，你还是希望你的用户用最简单方便的操作界面，而不是必须搞懂所有原理才能够使用你所设计的产品……
+當我們用 Python 編程的時候，更多的情況下，我們隻不過是在使用別人已經寫好的函數，或者用更專業一點的詞藻，叫做 “已完好封裝的函數”。而我們所需要做的事情（所謂的 “學習使用函數”），其實隻不過是 “通過閱讀産品說明書了解如何使用産品” 而已，真的冇多神秘……
 
-当我们用 Python 编程的时候，更多的情况下，我们只不过是在使用别人已经写好的函数，或者用更专业一点的词藻，叫做 “已完好封装的函数”。而我们所需要做的事情（所谓的 “学习使用函数”），其实只不过是 “通过阅读产品说明书了解如何使用产品” 而已，真的没多神秘……
+**註意**
 
-**注意**
+> 這一章的核心目的，不是讓你學會如何寫函數；而是通過一些例子，讓你大抵上學會 “_如何閱讀官方文檔中關於函數的使用說明_”。也請註意之前的那個詞：“_大抵上_”，所以**仟萬別怕自己最初的時候理解不全麵**。
 
-> 这一章的核心目的，不是让你学会如何写函数；而是通过一些例子，让你大抵上学会 “*如何阅读官方文档中关于函数的使用说明*”。也请注意之前的那个词：“*大抵上*”，所以**千万别怕自己最初的时候理解不全面**。
-
-另外，这一章中用来举例的函数，全部来自于同一个官方文档页面，[Built-in Functions](https://docs.python.org/3/library/functions.html)：
+另外，這一章中用來舉例的函數，全部來自於同一個官方文檔頁麵，[Built-in Functions](https://docs.python.org/3/library/functions.html)：
 
 > https://docs.python.org/3/library/functions.html
 
@@ -28,9 +27,9 @@
 
 ### 基本的使用方法
 
-`print()` 是初学者最常遇到的函数 —— 姑且不说是不是最常用到的。
+`print()` 是初學者最常遇到的函數 —— 姑且不說是不是最常用到的。
 
-它最基本的作用就是把传递给它的值输出到屏幕上，如果不给它任何参数，那么它就输出一个空行：
+它最基本的作用就是把傳遞給它的值輸出到屏幕上，如果不給它任何參數，那麼它就輸出一個空行：
 
 ```python
 print('line 1st')
@@ -41,10 +40,10 @@ print('line 4th')
 
     line 1st
     line 2nd
-    
+
     line 4th
 
-你也可以向它传递多个参数，参数之间用 `,` 分开，它就会把那些值逐个输出到屏幕，每个值之间默认用空格分开。
+你也可以嚮它傳遞多個參數，參數之間用 `,` 分開，它就會把那些值逐個輸出到屏幕，每個值之間默認用空格分開。
 
 ```python
 print('Hello,', 'jack', 'mike', '...', 'and all you guys!')
@@ -52,7 +51,7 @@ print('Hello,', 'jack', 'mike', '...', 'and all you guys!')
 
     Hello, jack mike ... and all you guys!
 
-当我们想把变量或者表达式的值插入字符串中的时候，可以用 f-string：
+當我們想把變量或者錶達式的值插入字符串中的時候，可以用 f-string：
 
 ```python
 name = 'Ann'
@@ -62,7 +61,7 @@ print(f'{name} is {age} years old.')
 
     Ann is 22 years old.
 
-但这并不是 `print()` 这个函数的功能，这实际上是 [`f-string`](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting) 的功能，`f-string` 中用花括号 `{}` 括起来的部分是表达式，最终转换成字符串的时候，那些表达式的值（而不是变量或者表达式本身）会被插入相应的位置……
+但這並不是 `print()` 這個函數的功能，這實際上是 [`f-string`](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting) 的功能，`f-string` 中用花括號 `{}` 括起來的部分是錶達式，最終轉換成字符串的時候，那些錶達式的值（而不是變量或者錶達式本身）會被插入相應的位置……
 
 ```python
 name = 'Ann'
@@ -72,38 +71,38 @@ f'{name} is {age} years old.'
 
     'Ann is 22 years old.'
 
-所以，`print(f'{name} is {age} years old.')` 这一句中，函数 `print()` 完成的还是它最基本的功能：给它什么，它就把什么输出到屏幕上。
+所以，`print(f'{name} is {age} years old.')` 這一句中，函數 `print()` 完成的還是它最基本的功能：給它什麼，它就把什麼輸出到屏幕上。
 
-### print() 的官方文档说明
+### print() 的官方文檔說明
 
-以下，是 print() 这个函数的[官方文档](https://docs.python.org/3/library/functions.html#print)：
+以下，是 print() 這個函數的[官方文檔](https://docs.python.org/3/library/functions.html#print)：
 
 ![](https://raw.githubusercontent.com/selfteaching/the-craft-of-selfteaching/master/images/doc-print.png?raw=true)
 
-最必须读懂的部分，就是这一行：
+最必須讀懂的部分，就是這一行：
 
 > `print(*object, sep=' ', end='\n', file=sys.stdout, flush=False)` <a href='#fn1' name='fn1b'><sup>[1]</sup></a>
 
-先只注意那些有着 `=` 的参数，`sep=' '`、`end='\n'`、`file=sys.stdout`，和 `flush=False`。
+先隻註意那些有著 `=` 的參數，`sep=' '`、`end='\n'`、`file=sys.stdout`，和 `flush=False`。
 
-这其中，先关注这三个 `sep=' '`、`end='\n'`、`file=sys.stdout`：
+這其中，先關註這三個 `sep=' '`、`end='\n'`、`file=sys.stdout`：
 
-> * `sep=' '`：接收多个参数之后，输出时，分隔符号默认为空格，`' '`；
-> * `end='\n'`：输出行的末尾默认是换行符号 `'\n'`；
-> * `file=sys.stdout`：默认的输出对象是 `sys.stdout`（即，用户正在使用的屏幕）……
+> - `sep=' '`：接收多個參數之後，輸出時，分隔符號默認為空格，`' '`；
+> - `end='\n'`：輸出行的末尾默認是換行符號 `'\n'`；
+> - `file=sys.stdout`：默認的輸出對象是 `sys.stdout`（即，用戶正在使用的屏幕）……
 
-也就是说，这个函数中有若干个具有默认值的参数，即便我们在调用这个函数的时候，就算没有指定它们，它们也存在于此。
+也就是說，這個函數中有若幹個具有默認值的參數，即便我們在調用這個函數的時候，就算冇有指定它們，它們也存在於此。
 
-即，当我们调用 `print('Hello', 'world!')` 的时候，相当于我们调用的是 `print('Hello', 'world!', sep=' ', end='\n', file=sys.stdout, flush=False)`
+即，當我們調用 `print('Hello', 'world!')` 的時候，相當於我們調用的是 `print('Hello', 'world!', sep=' ', end='\n', file=sys.stdout, flush=False)`
 
 ```python
-import sys                                  # 如果没有这一行，代码会报错
+import sys                                  # 如果冇有這一行，代碼會報錯
 
-print('Hello', 'world!')                    # 下一行的输出和这一行相同
+print('Hello', 'world!')                    # 下一行的輸出和這一行相同
 print('Hello', 'world!', sep=' ', end='\n', file=sys.stdout, flush=False)
 print('Hello', 'world!', sep='-', end='\t')
-print('Hello', 'world!', sep='~')           # 上一行的末尾是 \t，所以，这一行并没有换行显示
-print('Hello', 'world!', sep='\n')          # 参数之间用换行 \n 分隔
+print('Hello', 'world!', sep='~')           # 上一行的末尾是 \t，所以，這一行並冇有換行顯示
+print('Hello', 'world!', sep='\n')          # 參數之間用換行 \n 分隔
 ```
 
     Hello world!
@@ -112,13 +111,13 @@ print('Hello', 'world!', sep='\n')          # 参数之间用换行 \n 分隔
     Hello
     world!
 
-很多人只看各种教材、教程，却从来不去翻阅官方文档 —— 到最后非常吃亏。只不过是多花一点点的功夫而已，看过之后，就会知道：原来 `print()` 这个函数是可以往文件里写数据的，只要指定 `file` 这个参数为一个已经打开的文件对象就可以了（真的有很多人完全不知道）……
+很多人隻看各種教材、教程，卻從來不去翻閱官方文檔 —— 到最後非常吃虧。隻不過是多花一點點的功夫而已，看過之後，就會知道：原來 `print()` 這個函數是可以往文件裏寫數據的，隻要指定 `file` 這個參數為一個已經打開的文件對象就可以了（真的有很多人完全不知道）……
 
-另外，现在可以说清楚了：
+另外，現在可以說清楚了：
 
-> `print()` 这个函数的返回值是 `None` —— 注意，它向屏幕输出的内容，与 `print()` 这个函数的返回值不是一回事。
+> `print()` 這個函數的返回值是 `None` —— 註意，它嚮屏幕輸出的內容，與 `print()` 這個函數的返回值不是一回事。
 
-做为例子，看看 `print(print(1))` 这个语句 —— `print()` 这个函数被调用了两次，第一次是 `print(1)`，它向屏幕输出了一次，完整的输出值实际上是 `str(1) + '\n'`，而后返回一个值，`None`；而第二次调用 print()，这相当于是向屏幕输出这个 `None`：
+做為例子，看看 `print(print(1))` 這個語句 —— `print()` 這個函數被調用了兩次，第一次是 `print(1)`，它嚮屏幕輸出了一次，完整的輸出值實際上是 `str(1) + '\n'`，而後返回一個值，`None`；而第二次調用 print()，這相當於是嚮屏幕輸出這個 `None`：
 
 ```python
 print(print(1))
@@ -127,23 +126,24 @@ print(print(1))
     1
     None
 
-“**看说明书**” 就是这样，全都看了，真不一定全部看懂，但看总是比不看强，因为总是有能看懂的部分……
+“**看說明書**” 就是這樣，全都看了，真不一定全部看懂，但看總是比不看強，因為總是有能看懂的部分……
 
-## 关键字参数
+## 關鍵字參數
 
-在 Python 中，函数的参数，有两种：
-> * **位置参数**（Positional Arguments，在官方文档里常被缩写为 *arg*）
-> * **关键字参数**（Keyword Arguments，在官方文档里常被缩写为 *kwarg*）
+在 Python 中，函數的參數，有兩種：
 
-在函数定义中，带有 `=` 的，即，已为其设定了默认值的参数，叫做 Keyword Arguments，其它的是 Positional Arguments。
+> - **位置參數**（Positional Arguments，在官方文檔裏常被縮寫為 _arg_）
+> - **關鍵字參數**（Keyword Arguments，在官方文檔裏常被縮寫為 _kwarg_）
 
-在调用有 Keyword Arguments 的函数之时，如若不提供这些参数，那么参数在执行时，启用的是它在定义的时候为那些 Keyword Arguments 所设定的默认值；如若提供了这些参数的值，那么参数在执行的时候，启用的是接收到的相应值。
+在函數定義中，帶有 `=` 的，即，已為其設定了默認值的參數，叫做 Keyword Arguments，其它的是 Positional Arguments。
 
-比如，`sorted()` 函数，它的定义如下：
+在調用有 Keyword Arguments 的函數之時，如若不提供這些參數，那麼參數在執行時，啓用的是它在定義的時候為那些 Keyword Arguments 所設定的默認值；如若提供了這些參數的值，那麼參數在執行的時候，啓用的是接收到的相應值。
+
+比如，`sorted()` 函數，它的定義如下：
 
 > `sorted(iterable, *, key=None, reverse=False)`
 
-现在先只关注它的 Keyword Arguments，`reverse`：
+現在先隻關註它的 Keyword Arguments，`reverse`：
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -156,18 +156,18 @@ sorted('abdc', reverse=True)
     ['a', 'b', 'c', 'd']
     ['d', 'c', 'b', 'a']
 
-## 位置参数
+## 位置參數
 
-位置参数，顾名思义，是 “由位置决定其值的参数”。拿 `divmod()` 为例，它的[官方文档](https://docs.python.org/3/library/functions.html#divmod)是这样写的：
+位置參數，顧名思義，是 “由位置決定其值的參數”。拿 `divmod()` 為例，它的[官方文檔](https://docs.python.org/3/library/functions.html#divmod)是這樣寫的：
 
 ![](https://raw.githubusercontent.com/selfteaching/the-craft-of-selfteaching/master/images/doc-divmod.png?raw=true)
 
-它接收且必须接收两个参数。
+它接收且必須接收兩個參數。
 
-> * 当你调用这个函数的时候，括号里写的第一个参数，是被除数，第二个参数是除数 —— 此为该函数的输入；
-> * 而它的返回值，是一个元组（Tuple，至于这是什么东西，后面讲清楚），其中包括两个值，第一个是商，第二个是余 —— 此为该函数的输出。
+> - 當你調用這個函數的時候，括號裏寫的第一個參數，是被除數，第二個參數是除數 —— 此為該函數的輸入；
+> - 而它的返回值，是一個元組（Tuple，至於這是什麼東西，後麵講清楚），其中包括兩個值，第一個是商，第二個是餘 —— 此為該函數的輸出。
 
-作为 “这个函数的用户”，你不能（事实上也没必要）调换这两个参数的意义。因为，根据定义，被传递的值的意义就是由参数的位置决定的。
+作為 “這個函數的用戶”，你不能（事實上也冇必要）調換這兩個參數的意義。因為，根據定義，被傳遞的值的意義就是由參數的位置決定的。
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -191,16 +191,16 @@ b
     0
     3
 
-## 可选位置参数
+## 可選位置參數
 
-有些函数，如 `pow()`，有**可选的位置参数**（Optional Positional Arguments）。
+有些函數，如 `pow()`，有**可選的位置參數**（Optional Positional Arguments）。
 
 ![](https://raw.githubusercontent.com/selfteaching/the-craft-of-selfteaching/master/images/doc-pow.png?raw=true)
 
-于是，`pow()` 有两种用法，各有不同的结果：
+於是，`pow()` 有兩種用法，各有不同的結果：
 
-> * `pow(x, y)` —— 返回值是 `x ** y`
-> * `pow(x, y, z)` —— 返回值是 `x ** y % z`
+> - `pow(x, y)` —— 返回值是 `x ** y`
+> - `pow(x, y, z)` —— 返回值是 `x ** y % z`
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
@@ -213,38 +213,38 @@ pow(2, 3, 4)
     8
     0
 
-注意 `pow()` 函数定义部分中，圆括号内的方括号 `[, z]` —— 这是非常严谨的标注，如果没有 `z`，那么那个逗号 `,` 就是没必要的。
+註意 `pow()` 函數定義部分中，圓括號內的方括號 `[, z]` —— 這是非常嚴謹的標註，如果冇有 `z`，那麼那個逗號 `,` 就是冇必要的。
 
-看看 `exec()` 的官方文档（先别管这个函数干嘛用的），注意函数定义中的两个嵌套的方括号：
+看看 `exec()` 的官方文檔（先別管這個函數幹嘛用的），註意函數定義中的兩個嵌套的方括號：
 
 ![](https://raw.githubusercontent.com/selfteaching/the-craft-of-selfteaching/master/images/doc-exec.png?raw=true)
 
-这些方括号的意思是说：
+這些方括號的意思是說：
 
-> * 没在方括号里的 `object` 是不可或缺的参数，调用时必须提供；
-> * 可以有第二个参数，第二个参数会被接收为 `globals`；
-> * 在有第二个参数的情况下，第三个参数会被接收为 `locals`；
-> * *但是，你没办法在不指定 `globals` 这个位置参数的情况下指定 `locals`……*
+> - 冇在方括號裏的 `object` 是不可或缺的參數，調用時必須提供；
+> - 可以有第二個參數，第二個參數會被接收為 `globals`；
+> - 在有第二個參數的情況下，第三個參數會被接收為 `locals`；
+> - _但是，你冇辦法在不指定 `globals` 這個位置參數的情況下指定 `locals`……_
 
-## 可接收很多值的位置参数
+## 可接收很多值的位置參數
 
-再回头看看 `print()`，它的第一个位置参数，`object` 前面是有个星号的：`*object, ...`。
+再回頭看看 `print()`，它的第一個位置參數，`object` 前麵是有個星號的：`*object, ...`。
 
-对函数的用户来说，这说明，这个位置可以接收很多个参数（或者说，这个位置可以接收一个列表或者元组）。
+對函數的用戶來說，這說明，這個位置可以接收很多個參數（或者說，這個位置可以接收一個列錶或者元組）。
 
-再仔细看看 `print()`，它只有一个位置参数：
+再仔細看看 `print()`，它隻有一個位置參數：
 
 ![](https://raw.githubusercontent.com/selfteaching/the-craft-of-selfteaching/master/images/doc-print-def.png?raw=true)
 
-因为位置决定了值的定义，一般来说，一个函数里最多只有一个这种可以接收很多值的位置参数 —— 否则如何获知谁是谁呢？
+因為位置決定了值的定義，一般來說，一個函數裏最多隻有一個這種可以接收很多值的位置參數 —— 否則如何獲知誰是誰呢？
 
-如果与此同时，还有若干个位置参数，那么，*能够接收很多值的位置参数*只能放置最后，就好像 `max()` 函数那样：
+如果與此同時，還有若幹個位置參數，那麼，*能夠接收很多值的位置參數*隻能放置最後，就好像 `max()` 函數那樣：
 
 ![](https://raw.githubusercontent.com/selfteaching/the-craft-of-selfteaching/master/images/doc-max.png?raw=true)
 
-## Class 也是函数
+## Class 也是函數
 
-虽然你现在还不一定知道 Class 究竟是什么，但在阅读官方文档的时候，遇到一些内建函数前面写着 Class，比如 `Class bool([x])`，千万别奇怪，因为 Class 本质上来看就是一种特殊类型的函数，也就是说，它也是函数：
+雖然你現在還不一定知道 Class 究竟是什麼，但在閱讀官方文檔的時候，遇到一些內建函數前麵寫著 Class，比如 `Class bool([x])`，仟萬別奇怪，因為 Class 本質上來看就是一種特殊類型的函數，也就是說，它也是函數：
 
 ![](https://raw.githubusercontent.com/selfteaching/the-craft-of-selfteaching/master/images/doc-class.png?raw=true)
 
@@ -265,49 +265,51 @@ bool(None)
     False
     False
 
-## 总结
+## 總結
 
-本章需要（大致）了解的重点如下，其实很简单：
+本章需要（大緻）了解的重點如下，其實很簡單：
 
-> * 你可以把函数当作一个产品，而你自己是这个产品的用户；
-> * 既然你是产品的用户，你要养成好习惯，一定要亲自阅读产品说明书；
-> * 调用函数的时候，注意*可选位置参数的使用方法*和*关键字参数的默认值*；
-> * 函数定义部分，注意两个符号就行了，`[]` 和 `=`；
-> * 所有的函数都有返回值，即便它内部不指定返回值，也有一个默认返回值：`None`；
-> * 另外，一定要耐心阅读该函数在使用的时候需要注意什么 —— 产品说明书的主要作用就在这里……
+> - 你可以把函數當作一個産品，而你自己是這個産品的用戶；
+> - 既然你是産品的用戶，你要養成好習慣，一定要親自閱讀産品說明書；
+> - 調用函數的時候，註意*可選位置參數的使用方法*和*關鍵字參數的默認值*；
+> - 函數定義部分，註意兩個符號就行了，`[]` 和 `=`；
+> - 所有的函數都有返回值，即便它內部不指定返回值，也有一個默認返回值：`None`；
+> - 另外，一定要耐心閱讀該函數在使用的時候需要註意什麼 —— 産品說明書的主要作用就在這裏……
 
-知道这些就很好了！
+知道這些就很好了！
 
-这就好像你拿着一张地图，不可能一下子掌握其中所有的细节，但花几分钟搞清楚 “图例”（Legend）部分总是可以的，知道什么样的线标示的是公交车，什么样的线标示的是地铁，什么样的线标示的是桥梁，然后知道上北下南左西右东 —— 这之后，就可以开始慢慢研究地图了……
+這就好像你拿著一張地圖，不可能一下子掌握其中所有的細節，但花幾分鍾搞清楚 “圖例”（Legend）部分總是可以的，知道什麼樣的線標示的是公交車，什麼樣的線標示的是地鐵，什麼樣的線標示的是橋梁，然後知道上北下南左西右東 —— 這之後，就可以開始慢慢研究地圖了……
 
-为了学会使用 Python，你以后最常访问的页面一定是这个：
+為了學會使用 Python，你以後最常訪問的頁麵一定是這個：
 
-> * https://docs.python.org/3/library/index.html
+> - https://docs.python.org/3/library/index.html
 >
->   而最早反复阅读查询的页面肯定是其中的这两个：
->   * https://docs.python.org/3/library/functions.html
->   * https://docs.python.org/3/library/stdtypes.html
+>   而最早反複閱讀查詢的頁麵肯定是其中的這兩個：
+>
+>   - https://docs.python.org/3/library/functions.html
+>   - https://docs.python.org/3/library/stdtypes.html
 
-对了，还有就是，在这一章之后，你已经基本上 “**精通**” 了 `print()` 这个函数的用法。
+對了，還有就是，在這一章之後，你已經基本上 “**精通**” 了 `print()` 這個函數的用法。
 
------
-**脚注**
+---
 
-（2019.02.14）<a name='fn1'>[1]</a>：`print()` 函数的[官方文档](https://docs.python.org/3/library/functions.html#print)里，`sep=''` 肯定是 `sep=' '` 的笔误 —— 可以用以下代码验证：
+**腳註**
+
+（2019.02.14）<a name='fn1'>[1]</a>：`print()` 函數的[官方文檔](https://docs.python.org/3/library/functions.html#print)裏，`sep=''` 肯定是 `sep=' '` 的筆誤 —— 可以用以下代碼驗證：
 
 ```python
 print('a', 'b', sep='')
 print('a', 'b')
 ```
-（2019.03.16）有读者提醒：https://github.com/selfteaching/the-craft-of-selfteaching/issues/111
 
-> 而现在（2019.03.16）复制粘贴文档中的 `sep=' '`，会发现是有空格的。
+（2019.03.16）有讀者提醒：https://github.com/selfteaching/the-craft-of-selfteaching/issues/111
+
+> 而現在（2019.03.16）複製粘貼文檔中的 `sep=' '`，會發現是有空格的。
 >
-> 这是改了么？
+> 這是改了麼？
 
-我回去查看了一下 2019.02.13 我提交的 bug track：[https://bugs.python.org/issue35986](https://bugs.python.org/issue35986)，结论是 “人家没问题，是我自己的浏览器字体设置有问题”……
+我回去查看了一下 2019.02.13 我提交的 bug track：[https://bugs.python.org/issue35986](https://bugs.python.org/issue35986)，結論是 “人家冇問題，是我自己的瀏覽器字體設置有問題”……
 
-然而，我决定将这段文字保留在此书里，以便人们看到 “平日里软件维护是什么样的” —— 作为一个实例放在这里，很好。
+然而，我決定將這段文字保留在此書裏，以便人們看到 “平日裏軟件維護是什麼樣的” —— 作為一個實例放在這裏，很好。
 
 <a href='#fn1b'><small>↑Back to Content↑</small></a>
-

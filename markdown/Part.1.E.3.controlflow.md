@@ -1,9 +1,8 @@
+# 流程控製
 
-# 流程控制
+在相對深入了解了值的基本操作之後，我們需要再返回來對流程控製做更深入的了解。
 
-在相对深入了解了值的基本操作之后，我们需要再返回来对流程控制做更深入的了解。
-
-之前我们看过这个寻找质数的程序：
+之前我們看過這個尋找質數的程序：
 
 ```python
 for n in range(2, 100):
@@ -17,22 +16,22 @@ for n in range(2, 100):
         print(n)
 ```
 
-这其中，包含了*分支*与*循环* —— 无论多复杂的流程控制用这两个东西就够了，就好像无论多复杂的电路最终都是由通路和开路仅仅两个状态构成的一样。
+這其中，包含了*分支*與*循環* —— 無論多複雜的流程控製用這兩個東西就夠了，就好像無論多複雜的電路最終都是由通路和開路僅僅兩個狀態構成的一樣。
 
-> 今天的人们觉得这是 “天经地义” 的事情，可实际上并非如此。这是 1966 年的一篇论文所带来的巨大改变 —— *Flow diagrams, turing machines and languages with only two formation rules* by Böhm and Jacopini (1966)。实际上，直到上个世纪末，`GOTO` 语句才从各种语言里近乎 “灭绝”……
+> 今天的人們覺得這是 “天經地義” 的事情，可實際上並非如此。這是 1966 年的一篇論文所帶來的巨大改變 —— _Flow diagrams, turing machines and languages with only two formation rules_ by Böhm and Jacopini (1966)。實際上，直到上個世紀末，`GOTO` 語句才從各種語言裏近乎 “滅絕”……
 >
-> 任何进步，无论大小，其实都相当不容易，都非常耗时费力 —— 在哪儿都一样。有兴趣、有时间，可以去浏览 Wikipedia 上的简要说明 —— [Wikipedia: Minimal structured control flow](https://en.wikipedia.org/wiki/Control_flow#Goto)。
+> 任何進步，無論大小，其實都相當不容易，都非常耗時費力 —— 在哪兒都一樣。有興趣、有時間，可以去瀏覽 Wikipedia 上的簡要說明 —— [Wikipedia: Minimal structured control flow](https://en.wikipedia.org/wiki/Control_flow#Goto)。
 
-## if 语句
+## if 語句
 
-`if` 语句的最简单构成是这样 —— 注意第 1 行末尾的冒号 `:` 和第 2 行的缩进：
+`if` 語句的最簡單構成是這樣 —— 註意第 1 行末尾的冒號 `:` 和第 2 行的縮進：
 
 ```python
 if expression:
     statements
 ```
 
-如果表达式 `expression` 返回值为真，执行 `if` 语句块内部的 `statements`，否则，什么都不做，执行 `if` 之后的下一个语句。
+如果錶達式 `expression` 返回值為真，執行 `if` 語句塊內部的 `statements`，否則，什麼都不做，執行 `if` 之後的下一個語句。
 
 ```python
 import random
@@ -44,7 +43,7 @@ if r % 2 == 0:
 
     372 is even.
 
-如果，表达式 `expression` 返回值无论真假，我们都需要做一点相应的事情，那么我们这么写：
+如果，錶達式 `expression` 返回值無論真假，我們都需要做一點相應的事情，那麼我們這麼寫：
 
 ```python
 if expression:
@@ -53,7 +52,7 @@ else:
     statements_for_False
 ```
 
-如果表达式 `expression` 返回值为真，执行 `if` 语句块内部的 `statements_for_True`，否则，就执行 `else` 语句块内部的 `statements_for_False`
+如果錶達式 `expression` 返回值為真，執行 `if` 語句塊內部的 `statements_for_True`，否則，就執行 `else` 語句塊內部的 `statements_for_False`
 
 ```python
 import random
@@ -67,7 +66,7 @@ else:
 
     945 is odd.
 
-有时，表达式 `<expression>` 返回的值有多种情况，并且针对不同的情况我们都要做相应的事情，那么可以这么写：
+有時，錶達式 `<expression>` 返回的值有多種情況，並且針對不同的情況我們都要做相應的事情，那麼可以這麼寫：
 
 ```python
 if expression_1:
@@ -83,11 +82,11 @@ elif expression_...:
     statements_for_expression_..._True
 ```
 
-Python 用 `elif` 处理这种多情况分支，相当于其它编程语言中使用 `switch` 或者 `case`……
+Python 用 `elif` 處理這種多情況分支，相當於其它編程語言中使用 `switch` 或者 `case`……
 
-`elif` 是 `else if` 的缩写，作用相同。
+`elif` 是 `else if` 的縮寫，作用相同。
 
-以下程序模拟投两个骰子的结果 —— 两个骰子数字加起来，等于 `7` 算平，大于 `7` 算大，小于 `7` 算小：
+以下程序模擬投兩個骰子的結果 —— 兩個骰子數字加起來，等於 `7` 算平，大於 `7` 算大，小於 `7` 算小：
 
 ```python
 import random
@@ -103,15 +102,15 @@ elif r > 7:
 
     Big!
 
-当然你还可以模拟投飞了的情况，即，最终的骰子数是 `0` 或者 `1`，即，`< 2`：
+當然你還可以模擬投飛了的情況，即，最終的骰子數是 `0` 或者 `1`，即，`< 2`：
 
 ```python
 import random
-r = random.randrange(0, 13) # 生成的随机数应该从 0 开始了；
+r = random.randrange(0, 13) # 生成的隨機數應該從 0 開始了；
 
 if r == 7:
     print('Draw!')
-elif r >= 2 and r < 7:      # 如果这里直接写 elif r < 7:，那么，else: 那一部分永远不会被执行……
+elif r >= 2 and r < 7:      # 如果這裏直接寫 elif r < 7:，那麼，else: 那一部分永遠不會被執行……
     print('Small!')
 elif r > 7:
     print('Big!')
@@ -121,11 +120,11 @@ else:
 
     Small!
 
-## for 循环
+## for 循環
 
-Python 语言中，`for` 循环不使用其它语言中那样的计数器，取而代之的是 `range()` 这个我称其为 “整数等差数列生成器” 的函数。
+Python 語言中，`for` 循環不使用其它語言中那樣的計數器，取而代之的是 `range()` 這個我稱其為 “整數等差數列生成器” 的函數。
 
-用 C 语言写循环是这样的：
+用 C 語言寫循環是這樣的：
 
 ```C
 for( a = 0; a < 10; a = a + 1 ){
@@ -133,11 +132,11 @@ for( a = 0; a < 10; a = a + 1 ){
 }
 ```
 
-用 Python 写同样的东西，是这样的：
+用 Python 寫同樣的東西，是這樣的：
 
 ```python
 for a in range(10):
-    print(f'value of a: {a}') #每次 a 的值都不同，从 0 递增至 9
+    print(f'value of a: {a}') #每次 a 的值都不同，從 0 遞增至 9
 ```
 
     value of a: 0
@@ -151,31 +150,31 @@ for a in range(10):
     value of a: 8
     value of a: 9
 
-### range() 函数
+### range() 函數
 
-`range()` 是个内建函数，[它的文档](https://docs.python.org/3/library/functions.html#func-range)是这样写的：
+`range()` 是個內建函數，[它的文檔](https://docs.python.org/3/library/functions.html#func-range)是這樣寫的：
 
 > **range**(_stop_)
 >
 > **range**(_start, stop[, step]_)
 
-只有一个参数的时候，这个参数被理解为 `stop`，生成一个从 `0` 开始，到 `stop - 1` 的整数数列。
+隻有一個參數的時候，這個參數被理解為 `stop`，生成一個從 `0` 開始，到 `stop - 1` 的整數數列。
 
-这就解释了为什么有的时候我们会在 `for ... in range(...):` 这种循环内的语句块里进行计算的时候，经常会在变量之后写上 `+ 1`，因为我们 range(n) 的返回数列中不包含 `n`，但我们有时候却需要 `n`。[点击这里返回看看第一章里提到的例子：所谓算法那一小节](Part.1.E.1.entrance.ipynb#plusone)。
+這就解釋了為什麼有的時候我們會在 `for ... in range(...):` 這種循環內的語句塊裏進行計算的時候，經常會在變量之後寫上 `+ 1`，因為我們 range(n) 的返回數列中不包含 `n`，但我們有時候卻需要 `n`。[點擊這裏返回看看第一章裏提到的例子：所謂算法那一小節](Part.1.E.1.entrance.ipynb#plusone)。
 
 ```python
 from IPython.core.interactiveshell import InteractiveShell
 InteractiveShell.ast_node_interactivity = "all"
 
 range(10)
-list(range(10)) # 将 range(10) 转换成 list，以便清楚看到其内容。
+list(range(10)) # 將 range(10) 轉換成 list，以便清楚看到其內容。
 ```
 
     range(0, 10)
 
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-`start` 参数的默认值是 `0`。如需指定起点，那么得给 `range()` 传递两个参数，比如，`range(2, 13)`……
+`start` 參數的默認值是 `0`。如需指定起點，那麼得給 `range()` 傳遞兩個參數，比如，`range(2, 13)`……
 
 ```python
 list(range(2, 13))
@@ -183,7 +182,7 @@ list(range(2, 13))
 
     [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
-第三个参数可选；`step`，步长，就相当于是 “等差数列” 当中的 “差”，默认值是 `1`。例如，`range(1, 10, 2)` 生成的是这样一个数列 `[1, 3, 5, 7, 9]`。所以，打印 `0 ～ 10` 之间的所有奇数，可以这样写：
+第三個參數可選；`step`，步長，就相當於是 “等差數列” 當中的 “差”，默認值是 `1`。例如，`range(1, 10, 2)` 生成的是這樣一個數列 `[1, 3, 5, 7, 9]`。所以，打印 `0 ～ 10` 之間的所有奇數，可以這樣寫：
 
 ```python
 for i in range(1, 10, 2):
@@ -196,7 +195,7 @@ for i in range(1, 10, 2):
     7
     9
 
-我们也可以生成负数的数列：
+我們也可以生成負數的數列：
 
 ```python
 list(range(0, -10, -1))
@@ -206,7 +205,7 @@ list(range(0, -10, -1))
 
 ### Continue、Break 和 Pass
 
-在循环的过程中，还可以用 `continue` 和 `break` 控制流程走向，通常是在某条件判断发生的情况下 —— 正如你早就见过的那样：
+在循環的過程中，還可以用 `continue` 和 `break` 控製流程走嚮，通常是在某條件判斷發生的情況下 —— 正如你早就見過的那樣：
 
 ```python
 for n in range(2, 100):
@@ -220,11 +219,11 @@ for n in range(2, 100):
         print(n)
 ```
 
-`continue` 语句将忽略其后的语句开始下次循环，而 `break` 语句将从此结束当前循环，开始执行循环之后的语句：
+`continue` 語句將忽略其後的語句開始下次循環，而 `break` 語句將從此結束當前循環，開始執行循環之後的語句：
 
 ![](https://raw.githubusercontent.com/selfteaching/the-craft-of-selfteaching/master/images/continue-break.png?raw=true)
 
-`for` 语句块还可以附加一个 `else` —— 这是 Python 的一个比较有个性的地方。附加在 `for` 结尾的 `else` 语句块，_在没有 `break` 发生的情况下会运行_。
+`for` 語句塊還可以附加一個 `else` —— 這是 Python 的一個比較有個性的地方。附加在 `for` 結尾的 `else` 語句塊，_在冇有 `break` 發生的情況下會運行_。
 
 ```python
 for n in range(2, 100):
@@ -234,8 +233,8 @@ for n in range(2, 100):
     for i in range(2, n):
         if (n % i) == 0:
             break
-    else:               # 下一行的 print(n) 事实上属于语句块 for i in range(2, n):
-        print(n)        # 整个循环结束，都没有发生 break 的情况下，才执行一次 print(n)
+    else:               # 下一行的 print(n) 事實上屬於語句塊 for i in range(2, n):
+        print(n)        # 整個循環結束，都冇有發生 break 的情況下，才執行一次 print(n)
 ```
 
     2
@@ -264,7 +263,7 @@ for n in range(2, 100):
     89
     97
 
-试比较以下两段代码：
+試比較以下兩段代碼：
 
 ```python
 for n in range(2, 100):
@@ -274,8 +273,8 @@ for n in range(2, 100):
     for i in range(2, n):
         if (n % i) == 0:
             break
-    print(n)            # 事实上相当于针对 range(2, 100) 中每个 n 都执行了一次 print(n)
-                        # 这个 print(n) 属于语句块 for n in range(2, 100):
+    print(n)            # 事實上相當於針對 range(2, 100) 中每個 n 都執行了一次 print(n)
+                        # 這個 print(n) 屬於語句塊 for n in range(2, 100):
 ```
 
 ```python
@@ -286,7 +285,7 @@ for n in range(2, 100):
     for i in range(2, n):
         if (n % i) == 0:
             break
-        print(n)            # 事实上相当于针对 range(2, n) 中每个 i 都执行了一次 print(n)
+        print(n)            # 事實上相當於針對 range(2, n) 中每個 i 都執行了一次 print(n)
 ```
 
     2
@@ -310,9 +309,10 @@ for n in range(2, 100):
     97
     99
 
-`pass` 语句什么都不干：
+`pass` 語句什麼都不幹：
 
 再比如，
+
 ```python
 def someFunction():
     pass
@@ -327,27 +327,27 @@ for i in range(100):
         pass
 ```
 
-换个角度去理解的话可能更清楚：`pass` 这个语句更多是给写程序的人用的。当你写程序的时候，你可以用 `pass` 占位，而后先写别的部分，过后再回来补充本来应该写在 `pass` 所在位置的那一段代码。
+換個角度去理解的話可能更清楚：`pass` 這個語句更多是給寫程序的人用的。當你寫程序的時候，你可以用 `pass` 佔位，而後先寫別的部分，過後再回來補充本來應該寫在 `pass` 所在位置的那一段代碼。
 
-写嵌套的判断语句或循环语句的时候，最常用 `pass`，因为写嵌套挺费脑子的，一不小心就弄乱了。所以，经常需要先用 `pass` 占位，而后逐一突破。
+寫嵌套的判斷語句或循環語句的時候，最常用 `pass`，因為寫嵌套挺費腦子的，一不小心就弄亂了。所以，經常需要先用 `pass` 佔位，而後逐一突破。
 
-## while 循环
+## while 循環
 
-今天，在绝大多数编程语言中，都提供两种循环结构：
+今天，在絕大多數編程語言中，都提供兩種循環結構：
 
-> * Collection-controlled loops（以集合为基础的循环）
-> * Condition-controlled loops（以条件为基础的循环）
+> - Collection-controlled loops（以集合為基礎的循環）
+> - Condition-controlled loops（以條件為基礎的循環）
 
-之前的 `for ... in ...` 就是 Collection-controlled loops；而在 Python 中提供的 Condition-controlled loops 是 `while` 循环。
+之前的 `for ... in ...` 就是 Collection-controlled loops；而在 Python 中提供的 Condition-controlled loops 是 `while` 循環。
 
-`while` 循环的格式如下：
+`while` 循環的格式如下：
 
 ```python
 while expression:
     statements
 ```
 
-输出 1000 以内的斐波那契数列的程序如下：
+輸出 1000 以內的斐波那契數列的程序如下：
 
 ```python
 n = 1000
@@ -360,43 +360,44 @@ print()
 
     0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
 
-`for` 和 `while` 的区别在哪里？什么时候应该用哪个？
+`for` 和 `while` 的區別在哪裏？什麼時候應該用哪個？
 
-`for` 更适合处理序列类型的数据（Sequence Type）的迭代，比如处理字符串中的每一个字符，比如把 `range()` 返回的数列当作某种序列类型的索引。
+`for` 更適合處理序列類型的數據（Sequence Type）的叠代，比如處理字符串中的每一個字符，比如把 `range()` 返回的數列當作某種序列類型的索引。
 
-`while` 更为灵活，因为它后面只需要接上一个逻辑表达式即可。
+`while` 更為靈活，因為它後麵隻需要接上一個邏輯錶達式即可。
 
-## 一个投骰子赌大小的游戏
+## 一個投骰子賭大小的遊戲
 
-虽然还不可能随心所欲写程序，但是，你现在具备了起码的 “阅读能力”。有了以上大概的介绍，你也许可以读懂一些代码了 —— 它们在你眼里再也不是天书了……
+雖然還不可能隨心所欲寫程序，但是，你現在具備了起碼的 “閱讀能力”。有了以上大概的介紹，你也許可以讀懂一些代碼了 —— 它們在你眼裏再也不是天書了……
 
-以下是一个让用户和程序玩掷骰子赌大小的程序。规则如下：
+以下是一個讓用戶和程序玩擲骰子賭大小的程序。規則如下：
 
->* 每次计算机随机生成一个 `2... 12` 之间的整数，用来模拟机器人投两个骰子的情况；
-* 机器人和用户的起始资金都是 10 个硬币
-* 要求用户猜大小：
-    * 用户输入 `b` 代表 “大”；
-    * 用户输入 `s` 代表 “小”；
-    * 用户输入 `q` 代表 “退出”；
-* 用户的输入和随机产生的数字比较有以下几种情况：
-    * 随机数小于 `7`，用户猜小，用户赢；
-    * 随机数小于 `7`，用户猜大，用户输；
-    * 随机数等于 `7`，用户无论猜大还是猜小，结局平，不输不赢；
-    * 随机数大于 `7`，用户猜小，用户输；
-    * 随机数大于 `7`，用户猜大，用户赢；
-* 游戏结束条件：
-    * 机器人和用户，若任意一方硬币数量为 `0`，则游戏结束；
-    * 用户输入了 `q` 主动终止游戏。
+> - 每次計算機隨機生成一個 `2... 12` 之間的整數，用來模擬機器人投兩個骰子的情況；
+
+- 機器人和用戶的起始資金都是 10 個硬幣
+- 要求用戶猜大小：
+  - 用戶輸入 `b` 代錶 “大”；
+  - 用戶輸入 `s` 代錶 “小”；
+  - 用戶輸入 `q` 代錶 “退出”；
+- 用戶的輸入和隨機産生的數字比較有以下幾種情況：
+  - 隨機數小於 `7`，用戶猜小，用戶贏；
+  - 隨機數小於 `7`，用戶猜大，用戶輸；
+  - 隨機數等於 `7`，用戶無論猜大還是猜小，結局平，不輸不贏；
+  - 隨機數大於 `7`，用戶猜小，用戶輸；
+  - 隨機數大於 `7`，用戶猜大，用戶贏；
+- 遊戲結束條件：
+  - 機器人和用戶，若任意一方硬幣數量為 `0`，則遊戲結束；
+  - 用戶輸入了 `q` 主動終止遊戲。
 
 ```python
 from random import randrange
 
-coin_user, coin_bot = 10, 10 # 可以用一个赋值符号分别为多个变量赋值
+coin_user, coin_bot = 10, 10 # 可以用一個賦值符號分別為多個變量賦值
 rounds_of_game = 0
 
-def bet(dice, wager):    # 接收两个参数，一个是骰子点数，另一个用户的输入
+def bet(dice, wager):    # 接收兩個參數，一個是骰子點數，另一個用戶的輸入
     if dice == 7:
-        print(f'The dice is {dice};\nDRAW!\n') # \n 是换行符号
+        print(f'The dice is {dice};\nDRAW!\n') # \n 是換行符號
         return 0
     elif dice < 7:
         if wager == 's':
@@ -413,15 +414,15 @@ def bet(dice, wager):    # 接收两个参数，一个是骰子点数，另一�
             print(f'The dice is {dice};\nYou WIN!\n')
             return 1
 
-while True:         #  除 for 之外的另外一个循环语句
+while True:         #  除 for 之外的另外一個循環語句
     print(f'You: {coin_user}\t Bot: {coin_bot}')
-    dice = randrange(2, 13)   # 生成一个 2 到 12 的随机数
+    dice = randrange(2, 13)   # 生成一個 2 到 12 的隨機數
     wager = input("What's your bet? ")
     if wager == 'q':
         break
-    elif wager in 'bs':  # 只有当用户输入的是 b 或者 s 得时候，才 “掷骰子”……
+    elif wager in 'bs':  # 隻有當用戶輸入的是 b 或者 s 得時候，才 “擲骰子”……
         result = bet(dice, wager)
-        coin_user += result    # coin_user += result 相当于 coin_user = coin_user + result
+        coin_user += result    # coin_user += result 相當於 coin_user = coin_user + result
         coin_bot -= result
         rounds_of_game += 1
     if coin_user == 0:
@@ -435,14 +436,14 @@ print(f"You've played {rounds_of_game} rounds.\n")
 print(f"You have {coin_user} coins now.\nBye!")
 ```
 
-## 总结
+## 總結
 
-有控制流，才能算得上是程序。
+有控製流，才能算得上是程序。
 
-> * 只处理一种情况，用 `if ... `
-> * 处理 `True`/`False` 两种情况，用 `if ... else ...`
-> * 处理多种情况，用 `if ... elif ... elif ... else ...`
-> * 迭代有序数据类型，用 `for ... in ...`，如果需要处理没有 `break` 发生的情况，用 `for ... else ...`
-> * 其它循环，用 `while ...`
-> * 与循环相关的语句还有 `continue`、`break`、`pass`
-> * 函数从控制流角度去看其实就是子程序
+> - 隻處理一種情況，用 `if ...`
+> - 處理 `True`/`False` 兩種情況，用 `if ... else ...`
+> - 處理多種情況，用 `if ... elif ... elif ... else ...`
+> - 叠代有序數據類型，用 `for ... in ...`，如果需要處理冇有 `break` 發生的情況，用 `for ... else ...`
+> - 其它循環，用 `while ...`
+> - 與循環相關的語句還有 `continue`、`break`、`pass`
+> - 函數從控製流角度去看其實就是子程序
